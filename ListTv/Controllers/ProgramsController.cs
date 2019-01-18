@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ListTv.Models;
+using ListTv.ViewModels;
 
 namespace ListTv.Controllers
 {
@@ -19,6 +20,24 @@ namespace ListTv.Controllers
         {
             var program = db.Program.Include(p => p.Channel);
             return View(program.ToList());
+        }
+
+        public ActionResult Main(DateTime date)
+        {
+            List<ProgTable> progtables = new List<ProgTable>();
+            var program = db.Program.Include(p => p.Channel);
+
+            foreach (var p in program)
+            {
+                ProgTable o = new ProgTable();
+                if (o.Date == date)
+                {
+                    o.ProgramName = p.ProgramName;
+                    o.Time = p.Time;
+                }
+                progtables.Add(o);
+            }
+            return View(progtables);
         }
 
         // GET: Programs/Details/5
