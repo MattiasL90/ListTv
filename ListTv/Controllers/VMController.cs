@@ -58,5 +58,14 @@ namespace ListTv.Controllers
             }
             return View(progtables);
         }
+
+        public ActionResult News(int id)
+        {
+
+
+
+
+            return View();
+        }
     }
 }
