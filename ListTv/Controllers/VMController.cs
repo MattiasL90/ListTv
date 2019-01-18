@@ -58,6 +58,8 @@ namespace ListTv.Controllers
                     o.ProgramName = p.ProgramName;
                     o.Time = p.Time;
                     o.ChannelId = p.ChannelId;
+                    o.Date = p.Date;
+                    o.Length = p.Length;
                 }
                 progtables.Add(o);
             }
