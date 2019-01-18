@@ -59,6 +59,20 @@ namespace ListTv.Controllers
             return View(progtables);
         }
 
-        public
+        public ActionResult ShowMore(int id)
+        {
+            List<Program> LstMore = new List<Program>();
+            ProgramsController pc = new ProgramsController();
+            var programs = pc.SendList();
+            foreach (var s in programs)
+            {
+                if (s.Id == id)
+                {
+                    LstMore.Add(new Program { Id = s.Id, ProgramName = s.ProgramName, Time = s.Time, Category = s.Category, ChannelId = s.ChannelId, Length = s.Length, Date = s.Date });
+                }
+            }
+            return View(LstMore);
+        }
+
     }
 }

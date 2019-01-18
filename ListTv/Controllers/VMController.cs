@@ -67,6 +67,48 @@ namespace ListTv.Controllers
             return View(progtables);
         }
 
+        public ActionResult ShowMore(int id)
+        {
+            List<ShowMore> LstMore = new List<ShowMore>();
+            ProgramsController pc = new ProgramsController();
+            var programs = pc.SendList();
+            foreach (var s in programs)
+            {
+                if (s.Id == id)
+                {
+                    LstMore.Add(new ShowMore { Id = s.Id, ProgramName = s.ProgramName, Time = s.Time, Category = s.Category, ChannelName = GetChannel(s.ChannelId.Value), Length = s.Length, Date = s.Date });
+                }
+            }
+            return View(LstMore);
+        }
+
+        public string GetChannel(int id)
+        {
+            string chan = "";
+            if (id == 1)
+            {
+                chan = "Svt";
+            }
+            else if (id == 2)
+            {
+                chan = "Tv3";
+            }
+            else if (id == 4)
+            {
+                chan = "Tv4";
+            }
+            else if (id == 5)
+            {
+                chan = "Tv6";
+            }
+            else
+            {
+                chan = "Kanal 5";
+            }
+            return chan;
+        }
+
+
         public ActionResult News(int id)
         {
 
