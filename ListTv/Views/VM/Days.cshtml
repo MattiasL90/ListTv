@@ -4,9 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@model List<ListTv.ViewModels.ProgTable>
 
 <h2>Days</h2>
 
+<div class="main">
 
+    <section>
 
+        <div class="kanal">
+            <h2>Svt</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.ProgramName</td>
+                        <td>@p.Time</td>
+                    </tr>
+                }
+            </table>
+        </div>
+</div>
