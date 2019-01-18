@@ -12,19 +12,7 @@
         <div class="container">
 
             <div id="days">
-                @Html.ActionLink("Idag", "Days", "VM", new { date = "2019-01-21" })
-
-
-                @Html.ActionLink(
-          "TEste",                                                  // linkText
-          "Days",                                    // actionName
-          "VM",                                                   // controllerName
-          new {                                                     // routeValues
-              date = "2019-01-21",
-
-          },
-          null                                                      // htmlAttributes
-            )
+                @Html.ActionLink("Idag", "Days", "VM", new { date = "2019-01-21" }, null)
 
 
                 <form class="day" action="@Url.Action("Index","Home")">

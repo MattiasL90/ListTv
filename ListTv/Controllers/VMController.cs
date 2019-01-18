@@ -49,7 +49,7 @@ namespace ListTv.Controllers
             foreach (var p in program)
             {
                 ProgTable o = new ProgTable();
-                if (o.Date == datum)
+                if (p.Date == datum)
                 {
                     o.ProgramName = p.ProgramName;
                     o.Time = p.Time;
