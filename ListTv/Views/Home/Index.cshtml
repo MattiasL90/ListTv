@@ -2,6 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
+@model List<ListTv.ViewModels.ProgramVM>
+
 <div id="main">
 
 
@@ -14,12 +16,12 @@
             </tr>
             @foreach (var p in Model)
             {
-                if (p.Channel == 1)
+                if (p.ChannelId == 1)
                 {
-                <tr>
-                    <td>@p.ProgramName</td>
-                    <td>@p.Time</td>
-                </tr>
+                    <tr>
+                        <td>@p.ProgramName</td>
+                        <td>@p.Time</td>
+                    </tr>
                 }
             }
         </table>

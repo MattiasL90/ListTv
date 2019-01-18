@@ -41,18 +41,23 @@ namespace ListTv.Controllers
 
         public ActionResult Days(string date)
         {
+            //DataBaseTvEntities dbtv = new DataBaseTvEntities(); 
             DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
-            List<ProgTable> progtables = new List<ProgTable>();
+            List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
+            //var program = (from cnl in dbtv.Channel
+            //                join prg in dbtv.Program on cnl.Id equals prg.ChannelId
+            //                select new { cnl.ChannelName, prg.ProgramName, prg.Time, prg.Date, prg.Length }).ToList();
 
             foreach (var p in program)
             {
-                ProgTable o = new ProgTable();
+                ProgramVM o = new ProgramVM();
                 if (p.Date == datum)
                 {
                     o.ProgramName = p.ProgramName;
                     o.Time = p.Time;
+                    o.ChannelId = p.ChannelId;
                 }
                 progtables.Add(o);
             }
