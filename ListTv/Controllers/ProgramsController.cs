@@ -22,22 +22,10 @@ namespace ListTv.Controllers
             return View(program.ToList());
         }
 
-        public ActionResult Main(DateTime date)
+        public List<Program> SendList()
         {
-            List<ProgTable> progtables = new List<ProgTable>();
             var program = db.Program.Include(p => p.Channel);
-
-            foreach (var p in program)
-            {
-                ProgTable o = new ProgTable();
-                if (o.Date == date)
-                {
-                    o.ProgramName = p.ProgramName;
-                    o.Time = p.Time;
-                }
-                progtables.Add(o);
-            }
-            return View(progtables);
+            return program.ToList();
         }
 
         // GET: Programs/Details/5

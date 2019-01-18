@@ -6,10 +6,13 @@ using System.Web.Mvc;
 using ListTv.Models;
 using ListTv.ViewModels;
 
+
 namespace ListTv.Controllers
 {
     public class VMController : Controller
     {
+        private object db;
+
         // GET: VM
         public ActionResult Index()
         {
@@ -30,6 +33,25 @@ namespace ListTv.Controllers
                 ProgramVMList.Add(pm);
             }
             return View(ProgramVMList);
+        }
+
+        public ActionResult Main(DateTime date)
+        {
+            ProgramsController pc = new ProgramsController();
+            List<ProgTable> progtables = new List<ProgTable>();
+            var program = pc.SendList();
+
+            foreach (var p in program)
+            {
+                ProgTable o = new ProgTable();
+                if (o.Date == date)
+                {
+                    o.ProgramName = p.ProgramName;
+                    o.Time = p.Time;
+                }
+                progtables.Add(o);
+            }
+            return View(progtables);
         }
     }
 }

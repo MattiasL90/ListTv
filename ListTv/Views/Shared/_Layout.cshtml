@@ -12,11 +12,12 @@
         <div class="container">
 
             <div id="days">
+                @Html.ActionLink("Idag", "Main", "VMController", new { date = 2019-01-21})
 
                 <form class="day" action="@Url.Action("Index")">
                     <button type="submit">idag</button>
                 </form>
-                <form method="get" class="day" action="@Url.Action("Days")">
+                <form method="get" class="day" action="@Url.Action("Main")">
                     <button type="submit" name="date" id="date" value="2019-01-22">Imorgon</button>
                 </form>
                 <form method="get" class="day" action="@Url.Action("Days")">
