@@ -10,35 +10,24 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-
-            <div id="days">
-                @Html.ActionLink("Idag", "Days", "VM", new { date = "2019-01-21" }, null)
-
-
-                <form class="day" action="@Url.Action("Index","Home")">
-                    <button type="submit">idag</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Main")">
-                    <button type="submit" name="date" id="date" value="2019-01-22">Imorgon</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Days", "VM")">
-                    <button type="submit" name="date" id="date" value="2019-01-23">Övermorgon</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Days", "VM")">
-                    <button type="submit" name="date" id="date" value="2019-01-24">24/1</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Days", "VM")">
-                    <button type="submit" name="date" id="date" value="2019-01-25">25/1</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Days", "VM")">
-                    <button type="submit" name="date" id="date" value="2019-01-26">26/1</button>
-                </form>
-                <form method="get" class="day" action="@Url.Action("Days", "VM")">
-                    <button type="submit" name="date" id="date" value="2019-01-27">27/1</button>
-                </form>
-
-
-
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Måndag", "Index", "Home", new { date = "2019-01-22" }, null)
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li> @Html.ActionLink("Tisdag", "Days", "VM", new { date = "2019-01-22" }, null)</li>
+                    <li> @Html.ActionLink("Onsdag", "Days", "VM", new { date = "2019-01-23" }, null)</li>
+                    <li> @Html.ActionLink("Torsdag", "Days", "VM", new { date = "2019-01-24" }, null)</li>
+                    <li> @Html.ActionLink("Fredag", "Days", "VM", new { date = "2019-01-25" }, null)</li>
+                    <li> @Html.ActionLink("Lördag", "Days", "VM", new { date = "2019-01-26" }, null)</li>
+                    <li> @Html.ActionLink("Söndag", "Days", "VM", new { date = "2019-01-27" }, null)</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -55,3 +44,10 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+
+
+
+
+
