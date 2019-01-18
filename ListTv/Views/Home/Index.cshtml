@@ -19,6 +19,82 @@
                 if (p.ChannelId == 1)
                 {
                     <tr>
+                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "Home", new { id = p.Id }, null)</td>
+                        <td>@p.Time</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="kanal">
+        <h2>Tv3</h2>
+        <table>
+            <tr>
+                <th>Program</th>
+                <th>Tid</th>
+            </tr>
+            @foreach (var p in Model)
+            {
+                if (p.ChannelId == 2)
+                {
+                    <tr>
+                        <td>@p.ProgramName</td>
+                        <td>@p.Time</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="kanal">
+        <h2>Tv4</h2>
+        <table>
+            <tr>
+                <th>Program</th>
+                <th>Tid</th>
+            </tr>
+            @foreach (var p in Model)
+            {
+                if (p.ChannelId == 4)
+                {
+                    <tr>
+                        <td>@p.ProgramName</td>
+                        <td>@p.Time</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="kanal">
+        <h2>Kanal 5</h2>
+        <table>
+            <tr>
+                <th>Program</th>
+                <th>Tid</th>
+            </tr>
+            @foreach (var p in Model)
+            {
+                if (p.ChannelId == 6)
+                {
+                    <tr>
+                        <td>@p.ProgramName</td>
+                        <td>@p.Time</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="kanal">
+        <h2>Tv6</h2>
+        <table>
+            <tr>
+                <th>Program</th>
+                <th>Tid</th>
+            </tr>
+            @foreach (var p in Model)
+            {
+                if (p.ChannelId == 5)
+                {
+                    <tr>
                         <td>@p.ProgramName</td>
                         <td>@p.Time</td>
                     </tr>

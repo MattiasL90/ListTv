@@ -55,6 +55,7 @@ namespace ListTv.Controllers
                 ProgramVM o = new ProgramVM();
                 if (p.Date == datum)
                 {
+                    o.Id = p.Id;
                     o.ProgramName = p.ProgramName;
                     o.Time = p.Time;
                     o.ChannelId = p.ChannelId.Value;
