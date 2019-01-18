@@ -57,7 +57,7 @@ namespace ListTv.Controllers
                 {
                     o.ProgramName = p.ProgramName;
                     o.Time = p.Time;
-                    o.ChannelId = p.ChannelId;
+                    o.ChannelId = p.ChannelId.Value;
                     o.Date = p.Date;
                     o.Length = p.Length;
                 }
