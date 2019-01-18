@@ -1,0 +1,12 @@
+﻿body {
+
+}
+.day {
+    padding-right: 10px;
+    float: left;
+}
+
+#days {
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
