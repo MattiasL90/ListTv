@@ -10,20 +10,32 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+            <div id="days">
+
+                <form class="day" action="@Url.Action("Index")">
+                    <button type="submit">idag</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-22">Imorgon</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-23">Övermorgon</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-24">24/1</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-25">25/1</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-26">26/1</button>
+                </form>
+                <form method="get" class="day" action="@Url.Action("Days")">
+                    <button type="submit" name="date" id="date" value="2019-01-27">27/1</button>
+                </form>
+
+
             </div>
         </div>
     </div>
