@@ -12,7 +12,7 @@
         <div class="container">
 
             <div id="days">
-                @Html.ActionLink("Idag", "Main", "VMController", new { date = 2019-01-21})
+                @Html.ActionLink("Idag", "Days", "ProgramVM", new { date = 2019-01-21 })
 
                 <form class="day" action="@Url.Action("Index")">
                     <button type="submit">idag</button>

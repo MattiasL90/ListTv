@@ -35,7 +35,7 @@ namespace ListTv.Controllers
             return View(ProgramVMList);
         }
 
-        public ActionResult Main(DateTime date)
+        public ActionResult Days(DateTime date)
         {
             ProgramsController pc = new ProgramsController();
             List<ProgTable> progtables = new List<ProgTable>();

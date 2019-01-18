@@ -232,10 +232,10 @@
     <Content Include="Views\Programs\Index.cshtml" />
     <Content Include="Views\Programs\Days.cshtml" />
     <Content Include="Views\Days\Days.cshtml" />
+    <Content Include="Views\VM\Days.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\VM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
