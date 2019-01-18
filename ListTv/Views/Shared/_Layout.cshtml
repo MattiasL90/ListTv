@@ -10,17 +10,9 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Måndag", "Index", "Home", new { date = "2019-01-22" }, null)
-            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    
+                    <li>@Html.ActionLink("Måndag", "Index", "Home", new { date = "2019-01-22" }, null)</li>
                     <li> @Html.ActionLink("Tisdag", "Days", "VM", new { date = "2019-01-22" }, null)</li>
                     <li> @Html.ActionLink("Onsdag", "Days", "VM", new { date = "2019-01-23" }, null)</li>
                     <li> @Html.ActionLink("Torsdag", "Days", "VM", new { date = "2019-01-24" }, null)</li>
