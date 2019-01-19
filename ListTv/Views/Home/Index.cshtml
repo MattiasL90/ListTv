@@ -38,7 +38,7 @@
                 if (p.ChannelId == 2)
                 {
                     <tr>
-                        <td>@p.ProgramName</td>
+                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
                         <td>@p.Time</td>
                     </tr>
                 }
@@ -57,7 +57,7 @@
                 if (p.ChannelId == 4)
                 {
                     <tr>
-                        <td>@p.ProgramName</td>
+                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
                         <td>@p.Time</td>
                     </tr>
                 }
@@ -76,7 +76,7 @@
                 if (p.ChannelId == 6)
                 {
                     <tr>
-                        <td>@p.ProgramName</td>
+                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
                         <td>@p.Time</td>
                     </tr>
                 }
@@ -95,7 +95,7 @@
                 if (p.ChannelId == 5)
                 {
                     <tr>
-                        <td>@p.ProgramName</td>
+                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
                         <td>@p.Time</td>
                     </tr>
                 }
