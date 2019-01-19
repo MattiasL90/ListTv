@@ -9,8 +9,6 @@
         <EntityTypeShape EntityType="DataBaseTvModel.Program" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DataBaseTvModel.FK_Program_ToTable" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DataBaseTvModel.Login" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DataBaseTvModel.MoreInfo" Width="1.5" PointX="5.625" PointY="1.5" />
-        <AssociationConnector Association="DataBaseTvModel.FK_Table_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

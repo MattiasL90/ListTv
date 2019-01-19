@@ -20,14 +20,6 @@
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="MoreInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProgramId" Type="int" Nullable="false" />
-          <Property Name="Info" Type="nchar" MaxLength="200" />
-        </EntityType>
         <EntityType Name="Program">
           <Key>
             <PropertyRef Name="Id" />
@@ -52,30 +44,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_ToTable">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="MoreInfo" Type="Self.MoreInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MoreInfo">
-              <PropertyRef Name="ProgramId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DataBaseTvModelStoreContainer">
           <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MoreInfo" EntityType="Self.MoreInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Program_ToTable" Association="Self.FK_Program_ToTable">
             <End Role="Channel" EntitySet="Channel" />
             <End Role="Program" EntitySet="Program" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="MoreInfo" EntitySet="MoreInfo" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -102,7 +77,6 @@
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Length" Type="Time" Precision="4" />
           <NavigationProperty Name="Channel" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Channel" />
-          <NavigationProperty Name="MoreInfo" Relationship="DataBaseTvModel.FK_Table_ToTable" FromRole="Program" ToRole="MoreInfo" />
         </EntityType>
         <Association Name="FK_Program_ToTable">
           <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
@@ -124,11 +98,6 @@
             <End Role="Program" EntitySet="Program" />
           </AssociationSet>
           <EntitySet Name="Login" EntityType="DataBaseTvModel.Login" />
-          <EntitySet Name="MoreInfo" EntityType="DataBaseTvModel.MoreInfo" />
-          <AssociationSet Name="FK_Table_ToTable" Association="DataBaseTvModel.FK_Table_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="MoreInfo" EntitySet="MoreInfo" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Login">
           <Key>
@@ -138,27 +107,6 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Type" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="MoreInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProgramId" Type="Int32" Nullable="false" />
-          <Property Name="Info" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Program" Relationship="DataBaseTvModel.FK_Table_ToTable" FromRole="MoreInfo" ToRole="Program" />
-        </EntityType>
-        <Association Name="FK_Table_ToTable">
-          <End Type="DataBaseTvModel.Program" Role="Program" Multiplicity="1" />
-          <End Type="DataBaseTvModel.MoreInfo" Role="MoreInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MoreInfo">
-              <PropertyRef Name="ProgramId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -192,15 +140,6 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MoreInfo">
-            <EntityTypeMapping TypeName="DataBaseTvModel.MoreInfo">
-              <MappingFragment StoreEntitySet="MoreInfo">
-                <ScalarProperty Name="Info" ColumnName="Info" />
-                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
