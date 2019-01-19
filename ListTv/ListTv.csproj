@@ -163,6 +163,10 @@
       <DependentUpon>AdoTv.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Models\PersonalList.cs">
+      <DependentUpon>AdoTv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PersonalListsController.cs" />
     <Compile Include="Models\Program.cs">
       <DependentUpon>AdoTv.tt</DependentUpon>
     </Compile>
@@ -242,6 +246,11 @@
     <Content Include="Views\Logins\Details.cshtml" />
     <Content Include="Views\Logins\Edit.cshtml" />
     <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\PersonalLists\Create.cshtml" />
+    <Content Include="Views\PersonalLists\Delete.cshtml" />
+    <Content Include="Views\PersonalLists\Details.cshtml" />
+    <Content Include="Views\PersonalLists\Edit.cshtml" />
+    <Content Include="Views\PersonalLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
