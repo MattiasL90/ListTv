@@ -61,6 +61,7 @@ namespace ListTv.Controllers
                     o.ChannelId = p.ChannelId.Value;
                     o.Date = p.Date;
                     o.Length = p.Length;
+                    o.Info = p.Info;
                 }
                 progtables.Add(o);
             }
@@ -76,7 +77,7 @@ namespace ListTv.Controllers
             {
                 if (s.Id == id)
                 {
-                    LstMore.Add(new ShowMore { Id = s.Id, ProgramName = s.ProgramName, Time = s.Time, Category = s.Category, ChannelName = GetChannel(s.ChannelId.Value), Length = s.Length, Date = s.Date });
+                    LstMore.Add(new ShowMore { Id = s.Id, ProgramName = s.ProgramName, Time = s.Time, Category = s.Category, ChannelName = GetChannel(s.ChannelId.Value), Length = s.Length, Date = s.Date, Info = s.Info });
                 }
             }
             return View(LstMore);

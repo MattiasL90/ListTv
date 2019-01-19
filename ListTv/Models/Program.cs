@@ -21,6 +21,7 @@ namespace ListTv.Models
         public Nullable<int> ChannelId { get; set; }
         public string Category { get; set; }
         public Nullable<System.TimeSpan> Length { get; set; }
+        public string Info { get; set; }
     
         public virtual Channel Channel { get; set; }
     }

@@ -15,5 +15,6 @@ namespace ListTv.ViewModels
         public string Category { get; set; }
         public Nullable<System.TimeSpan> Length { get; set; }
         public string ChannelName { get; set; }
+        public string Info { get; set; }
     }
 }

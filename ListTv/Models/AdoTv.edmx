@@ -31,6 +31,7 @@
           <Property Name="ChannelId" Type="int" />
           <Property Name="Category" Type="nchar" MaxLength="50" />
           <Property Name="Length" Type="time" Precision="4" />
+          <Property Name="Info" Type="nchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK_Program_ToTable">
           <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
@@ -77,6 +78,7 @@
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Length" Type="Time" Precision="4" />
           <NavigationProperty Name="Channel" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Channel" />
+          <Property Name="Info" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_Program_ToTable">
           <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
@@ -124,6 +126,7 @@
           <EntitySetMapping Name="Program">
             <EntityTypeMapping TypeName="DataBaseTvModel.Program">
               <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="Info" ColumnName="Info" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
                 <ScalarProperty Name="Time" ColumnName="Time" />

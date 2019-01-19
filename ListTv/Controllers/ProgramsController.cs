@@ -55,7 +55,7 @@ namespace ListTv.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProgramName,Time,Date,ChannelId,Category,Length")] Program program)
+        public ActionResult Create([Bind(Include = "Id,ProgramName,Time,Date,ChannelId,Category,Length,Info")] Program program)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ListTv.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProgramName,Time,Date,ChannelId,Category,Length")] Program program)
+        public ActionResult Edit([Bind(Include = "Id,ProgramName,Time,Date,ChannelId,Category,Length,Info")] Program program)
         {
             if (ModelState.IsValid)
             {

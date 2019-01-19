@@ -13,5 +13,8 @@ namespace ListTv.ViewModels
         public Nullable<System.TimeSpan> Time { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<System.TimeSpan> Length { get; set; }
+        public string Info { get; set; }
+
+
     }
 }
