@@ -14,6 +14,12 @@ namespace ListTv.Models
     
     public partial class Program
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Program()
+        {
+            this.MoreInfo = new HashSet<MoreInfo>();
+        }
+    
         public int Id { get; set; }
         public string ProgramName { get; set; }
         public Nullable<System.TimeSpan> Time { get; set; }
@@ -23,5 +29,7 @@ namespace ListTv.Models
         public Nullable<System.TimeSpan> Length { get; set; }
     
         public virtual Channel Channel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MoreInfo> MoreInfo { get; set; }
     }
 }

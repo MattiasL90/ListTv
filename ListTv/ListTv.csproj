@@ -159,6 +159,14 @@
     <Compile Include="Models\Channel.cs">
       <DependentUpon>AdoTv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>AdoTv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Models\MoreInfo.cs">
+      <DependentUpon>AdoTv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MoreInfoesController.cs" />
     <Compile Include="Models\Program.cs">
       <DependentUpon>AdoTv.tt</DependentUpon>
     </Compile>
@@ -233,6 +241,16 @@
     <Content Include="Views\Programs\Index.cshtml" />
     <Content Include="Views\VM\Days.cshtml" />
     <Content Include="Views\VM\ShowMore.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\MoreInfoes\Create.cshtml" />
+    <Content Include="Views\MoreInfoes\Delete.cshtml" />
+    <Content Include="Views\MoreInfoes\Details.cshtml" />
+    <Content Include="Views\MoreInfoes\Edit.cshtml" />
+    <Content Include="Views\MoreInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
