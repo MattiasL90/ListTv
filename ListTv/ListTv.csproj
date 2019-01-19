@@ -233,7 +233,7 @@
     <Content Include="Views\Programs\Index.cshtml" />
     <Content Include="Views\Programs\Days.cshtml" />
     <Content Include="Views\VM\Days.cshtml" />
-    <Content Include="Views\Home\ShowMore.cshtml" />
+    <Content Include="Views\VM\ShowMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
