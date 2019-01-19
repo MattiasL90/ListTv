@@ -19,6 +19,11 @@ namespace ListTv.Models
             return View(db.Login.ToList());
         }
 
+        public List<Login> SendList()
+        {
+            return db.Login.ToList();
+        }
+
         // GET: Logins/Details/5
         public ActionResult Details(string id)
         {

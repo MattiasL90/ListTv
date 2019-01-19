@@ -109,14 +109,23 @@ namespace ListTv.Controllers
             return chan;
         }
 
-
-        public ActionResult News(int id)
+        public ActionResult Login(string uname, string pword)
         {
+            LoginsController lc = new LoginsController();
+            var logins = lc.SendList();
+            foreach (var l in logins)
+            {
+                if (l.Username == uname && l.Password == pword)
+                {
 
-
+                    return View();
+                }
+            }
 
 
             return View();
         }
+
+
     }
 }
