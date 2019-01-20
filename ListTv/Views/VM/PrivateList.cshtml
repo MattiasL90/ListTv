@@ -7,11 +7,10 @@
 
 @model List<ListTv.ViewModels.ProgramVM>
 
-<h2>PrivateList</h2>
 
 @helper Rename(int id)
 {
-    string chan = "";
+  
     if (id == 1)
     {
         <h2>Svt</h2>;
@@ -34,48 +33,51 @@
     }
 }
 
-@{
 
-    List<int> channels = new List<int>();
-    int i = 0;
-    int b = 0;
-    foreach (var channel in Model)
-    {
-        if (i == 0)
+
+    @{
+
+        List<int> channels = new List<int>();
+        int i = 0;
+        int b = 0;
+        foreach (var channel in Model)
         {
-            channels.Add(channel.ChannelId);
-            i++;
-            b = channel.ChannelId;
-        }
-        else if (channel.ChannelId != b)
-        {
-            channels.Add(channel.ChannelId);
+            if (i == 0)
+            {
+                channels.Add(channel.ChannelId);
+                i++;
+                b = channel.ChannelId;
+            }
+            else if (channel.ChannelId != b)
+            {
+                channels.Add(channel.ChannelId);
+            }
         }
     }
-}
 
-<div id="main">
-    @foreach (var item in channels)
-    {
-        <div class="kanal">
-            <h2>@Rename(item)</h2>
-            <table>
-                <tr>
-                    <th>Program</th>
-                    <th>Tid</th>
-                </tr>
-                @foreach (var p in Model)
-                {
-                    if (p.ChannelId == 1)
+    <div id="main">
+        @foreach (var item in channels)
+        {
+            int pid = item;
+            <div class="kanal">
+                <h2>@Rename(item)</h2>
+                <table>
+                    <tr>
+                        <th>Program</th>
+                        <th>Tid</th>
+                    </tr>
+                    @foreach (var p in Model)
                     {
-                       <tr>
-                         <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                         <td>@p.Time</td>
-                        </tr>
+                        if (p.ChannelId == pid)
+                        {
+                           <tr>
+                             <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
+                             <td> @p.Time </td>
+                           </tr>
+                        }
                     }
-                }
-            </table>
-        </div>
-    }
-</div>
+                </table>
+            </div>
+        }
+    </div>
 

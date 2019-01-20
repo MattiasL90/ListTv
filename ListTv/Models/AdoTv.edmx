@@ -16,8 +16,8 @@
           <Key>
             <PropertyRef Name="Username" />
           </Key>
-          <Property Name="Username" Type="nchar" MaxLength="5" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonalList">
@@ -25,7 +25,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Channel" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Program">
@@ -37,7 +37,7 @@
           <Property Name="Time" Type="time" Precision="4" />
           <Property Name="Date" Type="date" />
           <Property Name="ChannelId" Type="int" />
-          <Property Name="Category" Type="nchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="Length" Type="time" Precision="4" />
           <Property Name="Info" Type="nchar" MaxLength="200" />
         </EntityType>
@@ -100,7 +100,7 @@
           <Property Name="Time" Type="Time" Precision="4" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="ChannelId" Type="Int32" />
-          <Property Name="Category" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Length" Type="Time" Precision="4" />
           <NavigationProperty Name="Channel" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Channel" />
           <Property Name="Info" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
@@ -135,8 +135,8 @@
           <Key>
             <PropertyRef Name="Username" />
           </Key>
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PersonalList" Relationship="DataBaseTvModel.FK_Table_ToTable1" FromRole="Login" ToRole="PersonalList" />
         </EntityType>
@@ -145,7 +145,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Channel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Login" Relationship="DataBaseTvModel.FK_Table_ToTable1" FromRole="PersonalList" ToRole="Login" />
         </EntityType>
