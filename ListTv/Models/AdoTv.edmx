@@ -20,6 +20,14 @@
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PersonalList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Channel" Type="nchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="Program">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,13 +53,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_ToTable">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="PersonalList" Type="Self.PersonalList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PersonalList">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DataBaseTvModelStoreContainer">
           <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalList" EntityType="Self.PersonalList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Program_ToTable" Association="Self.FK_Program_ToTable">
             <End Role="Channel" EntitySet="Channel" />
             <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="PersonalList" EntitySet="PersonalList" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -100,6 +125,11 @@
             <End Role="Program" EntitySet="Program" />
           </AssociationSet>
           <EntitySet Name="Login" EntityType="DataBaseTvModel.Login" />
+          <EntitySet Name="PersonalList" EntityType="DataBaseTvModel.PersonalList" />
+          <AssociationSet Name="FK_Table_ToTable1" Association="DataBaseTvModel.FK_Table_ToTable1">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="PersonalList" EntitySet="PersonalList" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Login">
           <Key>
@@ -108,7 +138,29 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PersonalList" Relationship="DataBaseTvModel.FK_Table_ToTable1" FromRole="Login" ToRole="PersonalList" />
         </EntityType>
+        <EntityType Name="PersonalList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Channel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Login" Relationship="DataBaseTvModel.FK_Table_ToTable1" FromRole="PersonalList" ToRole="Login" />
+        </EntityType>
+        <Association Name="FK_Table_ToTable1">
+          <End Type="DataBaseTvModel.Login" Role="Login" Multiplicity="1" />
+          <End Type="DataBaseTvModel.PersonalList" Role="PersonalList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PersonalList">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -143,6 +195,15 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalList">
+            <EntityTypeMapping TypeName="DataBaseTvModel.PersonalList">
+              <MappingFragment StoreEntitySet="PersonalList">
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

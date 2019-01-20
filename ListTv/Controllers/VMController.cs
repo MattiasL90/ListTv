@@ -109,13 +109,32 @@ namespace ListTv.Controllers
             return chan;
         }
 
-
-        public ActionResult News(int id)
+        public ActionResult Login(string uname, string pword)
         {
+            LoginsController lc = new LoginsController();
+            PersonalListsController pc = new PersonalListsController();
+            ProgramsController progc = new ProgramsController();
+            List<ProgramVM> personallist = new List<ProgramVM>();
+            var progs = progc.SendList();
+            var plist = pc.SendList();
 
+            var logins = lc.SendList();
+            foreach (var l in logins)
+            {
+                if (l.Username == uname && l.Password == pword)
+                {
+                    foreach (var p in plist)
+                    {
+                        foreach (var y in progs)
+                        {
+                            if (p.Channel == y.ChannelName)
+                            {
 
-
-
+                            }
+                        }
+                    }     
+                }
+            }
             return View();
         }
     }

@@ -9,112 +9,117 @@ using System.Web.Mvc;
 
 namespace ListTv.Models
 {
-    public class LoginsController : Controller
+    public class PersonalListsController : Controller
     {
         private DataBaseTvEntities db = new DataBaseTvEntities();
 
-        // GET: Logins
+        // GET: PersonalLists
         public ActionResult Index()
         {
-            return View(db.Login.ToList());
+            var personalList = db.PersonalList.Include(p => p.Login);
+            return View(personalList.ToList());
         }
-
-        public List<Login> SendList()
+        public List<PersonalList> SendList()
         {
-            return db.Login.ToList();
+            var personalList = db.PersonalList.Include(p => p.Login);
+            return personalList.ToList();
         }
 
-        // GET: Logins/Details/5
-        public ActionResult Details(string id)
+        // GET: PersonalLists/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Login login = db.Login.Find(id);
-            if (login == null)
+            PersonalList personalList = db.PersonalList.Find(id);
+            if (personalList == null)
             {
                 return HttpNotFound();
             }
-            return View(login);
+            return View(personalList);
         }
 
-        // GET: Logins/Create
+        // GET: PersonalLists/Create
         public ActionResult Create()
         {
+            ViewBag.Username = new SelectList(db.Login, "Username", "Password");
             return View();
         }
 
-        // POST: Logins/Create
+        // POST: PersonalLists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,Password,Type")] Login login)
+        public ActionResult Create([Bind(Include = "Id,Username,Channel")] PersonalList personalList)
         {
             if (ModelState.IsValid)
             {
-                db.Login.Add(login);
+                db.PersonalList.Add(personalList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(login);
+            ViewBag.Username = new SelectList(db.Login, "Username", "Password", personalList.Username);
+            return View(personalList);
         }
 
-        // GET: Logins/Edit/5
-        public ActionResult Edit(string id)
+        // GET: PersonalLists/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Login login = db.Login.Find(id);
-            if (login == null)
+            PersonalList personalList = db.PersonalList.Find(id);
+            if (personalList == null)
             {
                 return HttpNotFound();
             }
-            return View(login);
+            ViewBag.Username = new SelectList(db.Login, "Username", "Password", personalList.Username);
+            return View(personalList);
         }
 
-        // POST: Logins/Edit/5
+        // POST: PersonalLists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,Type")] Login login)
+        public ActionResult Edit([Bind(Include = "Id,Username,Channel")] PersonalList personalList)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(login).State = EntityState.Modified;
+                db.Entry(personalList).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(login);
+            ViewBag.Username = new SelectList(db.Login, "Username", "Password", personalList.Username);
+            return View(personalList);
         }
 
-        // GET: Logins/Delete/5
-        public ActionResult Delete(string id)
+        // GET: PersonalLists/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Login login = db.Login.Find(id);
-            if (login == null)
+            PersonalList personalList = db.PersonalList.Find(id);
+            if (personalList == null)
             {
                 return HttpNotFound();
             }
-            return View(login);
+            return View(personalList);
         }
 
-        // POST: Logins/Delete/5
+        // POST: PersonalLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Login login = db.Login.Find(id);
-            db.Login.Remove(login);
+            PersonalList personalList = db.PersonalList.Find(id);
+            db.PersonalList.Remove(personalList);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

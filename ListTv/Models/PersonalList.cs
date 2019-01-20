@@ -12,19 +12,12 @@ namespace ListTv.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class PersonalList
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Login()
-        {
-            this.PersonalList = new HashSet<PersonalList>();
-        }
-    
+        public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public int Type { get; set; }
+        public string Channel { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonalList> PersonalList { get; set; }
+        public virtual Login Login { get; set; }
     }
 }

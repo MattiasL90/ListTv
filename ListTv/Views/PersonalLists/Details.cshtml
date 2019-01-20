@@ -1,0 +1,35 @@
+﻿@model ListTv.Models.PersonalList
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PersonalList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Channel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Channel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
