@@ -18,26 +18,49 @@ namespace ListTv.Controllers
         //    return View();
         //}
 
-        //public ActionResult Index()
-        //{
-        //    DataBaseTvEntities dbtv = new DataBaseTvEntities();
-        //    List<ProgramVM> ProgramVMList = new List<ProgramVM>();
-        //    var proglist = (from cnl in dbtv.Channel
-        //                    join prg in dbtv.Program on cnl.Id equals prg.ChannelId
-        //                    select new { cnl.ChannelName, prg.ProgramName, prg.Time, prg.Date, prg.Length }).ToList();
+        public ActionResult GetPrivateList(DateTime date, string uname, string pword)
+        {
+            ProgramsController pc = new ProgramsController();
+            var proglist = pc.SendList();
+            PersonalListsController pl = new PersonalListsController();
+            var plist = pl.SendList();
+            List<ProgramVM> personlist = new List<ProgramVM>();
 
-        //    foreach (var m in proglist)
-        //    {
-        //        ProgramVM pm = new ProgramVM();
-        //        pm.ChannelName = m.ChannelName;
-        //        pm.ProgramName = m.ProgramName;
-        //        pm.Time = m.Time;
-        //        pm.Date = m.Date;
-        //        pm.Length = m.Length;
-        //        ProgramVMList.Add(pm);
-        //    }
-        //    return View(ProgramVMList);
-        //}
+            if (Login(uname, pword) == 1)
+            {
+                return View("Admin");
+            }
+            else if (Login(uname, pword) == 2)
+            {
+                foreach (var p in proglist)
+                {
+                    foreach (var l in plist)
+                    {
+                        if (l.Channel == GetChannel(p.ChannelId.Value))
+                        {
+                            ProgramVM o = new ProgramVM();
+                            if (p.Date == date)
+                            {
+                                o.Id = p.Id;
+                                o.ProgramName = p.ProgramName;
+                                o.Time = p.Time;
+                                o.ChannelId = p.ChannelId.Value;
+                                o.Date = p.Date;
+                                o.Length = p.Length;
+                                o.Info = p.Info;
+                            }
+                            personlist.Add(o);
+                        }
+                    }
+                }
+                return View(personlist);
+            }
+            else
+            {
+                return View("Fail");
+            }
+
+        }
 
         public ActionResult Days(string date)
         {
@@ -109,33 +132,53 @@ namespace ListTv.Controllers
             return chan;
         }
 
-        public ActionResult Login(string uname, string pword)
+        public int Login(string uname, string pword)
         {
+            int lType = 0;
             LoginsController lc = new LoginsController();
-            PersonalListsController pc = new PersonalListsController();
-            ProgramsController progc = new ProgramsController();
-            List<ProgramVM> personallist = new List<ProgramVM>();
-            var progs = progc.SendList();
-            var plist = pc.SendList();
-
             var logins = lc.SendList();
             foreach (var l in logins)
             {
                 if (l.Username == uname && l.Password == pword)
                 {
-                    foreach (var p in plist)
-                    {
-                        foreach (var y in progs)
-                        {
-                            if (p.Channel == y.ChannelName)
-                            {
-
-                            }
-                        }
-                    }     
+                    lType = l.Type;
+                }
+                else
+                {
+                    l.Type = 0;
                 }
             }
-            return View();
+            return lType;
         }
+
+
+        //public ActionResult Login(string uname, string pword)
+        //{
+        //    LoginsController lc = new LoginsController();
+        //    PersonalListsController pc = new PersonalListsController();
+        //    ProgramsController progc = new ProgramsController();
+        //    List<ProgramVM> personallist = new List<ProgramVM>();
+        //    var progs = progc.SendList();
+        //    var plist = pc.SendList();
+
+        //    var logins = lc.SendList();
+        //    foreach (var l in logins)
+        //    {
+        //        if (l.Username == uname && l.Password == pword)
+        //        {
+        //            foreach (var p in plist)
+        //            {
+        //                foreach (var y in progs)
+        //                {
+        //                    if (p.Channel == y.ChannelName)
+        //                    {
+
+        //                    }
+        //                }
+        //            }     
+        //        }
+        //    }
+        //    return View();
+        //}
     }
 }
