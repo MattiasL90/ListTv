@@ -20,16 +20,16 @@
                     <li> @Html.ActionLink("Lördag", "Days", "VM", new { date = "2019-01-26" }, null)</li>
                     <li> @Html.ActionLink("Söndag", "Days", "VM", new { date = "2019-01-27" }, null)</li>
                 </ul>
-                <div class="login">
+                <form method="get" action="@Url.Action("Tomorrow","Test")">
                     <label for="uname"><b>Username</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required>
 
                     <label for="pword"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="pword" required>
 
-                    <button type="submit">Login</button>
+                    <button type="submit" name="date" id="date" value="24/1">Login</button>
 
-                </div>
+                </form>
             </div>
         </div>
     </div>
