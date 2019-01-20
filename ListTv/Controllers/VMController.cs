@@ -18,7 +18,7 @@ namespace ListTv.Controllers
         //    return View();
         //}
 
-        public ActionResult GetPrivateList(DateTime date, string uname, string pword)
+        public ActionResult PrivateList(DateTime date, string uname, string pword)
         {
             ProgramsController pc = new ProgramsController();
             var proglist = pc.SendList();
@@ -88,7 +88,7 @@ namespace ListTv.Controllers
                 }
                 progtables.Add(o);
             }
-            return View(progtables);
+            return View(SortList(progtables));
         }
 
         public ActionResult ShowMore(int id)
@@ -142,6 +142,7 @@ namespace ListTv.Controllers
                 if (l.Username == uname && l.Password == pword)
                 {
                     lType = l.Type;
+                    break;
                 }
                 else
                 {
@@ -149,6 +150,12 @@ namespace ListTv.Controllers
                 }
             }
             return lType;
+        }
+
+        public List<ProgramVM> SortList(List<ProgramVM> list)
+        {
+            list = list.OrderByDescending(x => x.ChannelId).ToList();
+            return list;
         }
 
 

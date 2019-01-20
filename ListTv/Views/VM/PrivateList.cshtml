@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "PrivateList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model List<ListTv.ViewModels.ProgramVM>
+
+<h2>PrivateList</h2>
+
+@helper Rename(int id)
+{
+    string chan = "";
+    if (id == 1)
+    {
+        <h2>Svt</h2>;
+    }
+    else if (id == 2)
+    {
+        <h2>Tv3</h2>;
+    }
+    else if (id == 4)
+    {
+        <h2>Tv4</h2>;
+    }
+    else if (id == 5)
+    {
+        <h2>Tv6</h2>;
+    }
+    else
+    {
+        <h2>Kanal 5</h2>;
+    }
+}
+
+@{
+
+    List<int> channels = new List<int>();
+    int i = 0;
+    int b = 0;
+    foreach (var channel in Model)
+    {
+        if (i == 0)
+        {
+            channels.Add(channel.ChannelId);
+            i++;
+            b = channel.ChannelId;
+        }
+        else if (channel.ChannelId != b)
+        {
+            channels.Add(channel.ChannelId);
+        }
+    }
+}
+
+<div id="main">
+    @foreach (var item in channels)
+    {
+        <div class="kanal">
+            <h2>@Rename(item)</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
+                {
+                    if (p.ChannelId == 1)
+                    {
+                       <tr>
+                         <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                         <td>@p.Time</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    }
+</div>
+

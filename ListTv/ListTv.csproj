@@ -251,6 +251,7 @@
     <Content Include="Views\PersonalLists\Details.cshtml" />
     <Content Include="Views\PersonalLists\Edit.cshtml" />
     <Content Include="Views\PersonalLists\Index.cshtml" />
+    <Content Include="Views\VM\PrivateList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
