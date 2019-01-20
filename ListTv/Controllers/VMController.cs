@@ -212,14 +212,17 @@ namespace ListTv.Controllers
         {
             PersonalListsController plc = new PersonalListsController();
             var plist = plc.SendList();
-            List<string> ownlist = new List<string>();
-            List<string> allist = ChannelList();
-
+            List<ProgTable> allist = ChannelList();
+            List<ProgTable> ownlist = new List<ProgTable>();
             foreach (var ol in plist)
             {
                 if (ol.Username == uname)
                 {
-                    ownlist.Add(ol.Channel);
+                    ProgTable p = new ProgTable()
+                    {
+                        Cname = ol.Channel
+                    };
+                    ownlist.Add(p);
                 }
             }
 
@@ -227,23 +230,25 @@ namespace ListTv.Controllers
             {
                 foreach (var ol in ownlist)
                 {
-                    if (al == ol)
+                    if (al.Cname == ol.Cname)
                     {
-                        allist.Remove(ol);
+                        allist.Remove(al);
                     }
                 }
             }
             return View(allist);
         }
 
-        public List<string> ChannelList()
+        public List<ProgTable> ChannelList()
         {
-            List<string> allist = new List<string>();
-            allist.Add("Svt");
-            allist.Add("Tv3");
-            allist.Add("Tv4");
-            allist.Add("Kanal 5");
-            allist.Add("Tv6");
+            List<ProgTable> allist = new List<ProgTable>
+            {
+                new ProgTable{Cname = "Svt"},
+                new ProgTable{Cname = "Tv3"},
+                new ProgTable{Cname = "Tv4"},
+                new ProgTable{Cname = "Kanal 5"},
+                new ProgTable{Cname = "Tv6"}
+            };
             return allist;
         }
 

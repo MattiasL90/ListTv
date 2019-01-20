@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+@model List<ListTv.ViewModels.ProgTable>
 
+<div>
+    <select>
+        @foreach (var item in Model)
+        {
+            <option value="@item.Cname">@item.Cname</option>
+        }
+    </select>
 </div>
