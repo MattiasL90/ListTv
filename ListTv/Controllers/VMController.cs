@@ -207,6 +207,12 @@ namespace ListTv.Controllers
             return list;
         }
 
+        public ActionResult AddFavorite()
+        {
+
+            return View();
+        }
+
 
         //public ActionResult Login(string uname, string pword)
         //{
