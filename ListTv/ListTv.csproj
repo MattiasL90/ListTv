@@ -252,6 +252,8 @@
     <Content Include="Views\PersonalLists\Edit.cshtml" />
     <Content Include="Views\PersonalLists\Index.cshtml" />
     <Content Include="Views\VM\PrivateList.cshtml" />
+    <Content Include="Views\VM\AddFavorite.cshtml" />
+    <Content Include="Views\VM\EditFavorite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

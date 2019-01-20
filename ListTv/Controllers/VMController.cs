@@ -26,6 +26,7 @@ namespace ListTv.Controllers
             var plist = pl.SendList();
             List<ProgramVM> personlist = new List<ProgramVM>();
 
+
             if (Login(uname, pword) == 1)
             {
                 return View("Admin");
@@ -207,9 +208,47 @@ namespace ListTv.Controllers
             return list;
         }
 
-        public ActionResult AddFavorite()
+        public ActionResult AddFavorite(string uname)
         {
+            PersonalListsController plc = new PersonalListsController();
+            var plist = plc.SendList();
+            List<string> ownlist = new List<string>();
+            List<string> allist = ChannelList();
 
+            foreach (var ol in plist)
+            {
+                if (ol.Username == uname)
+                {
+                    ownlist.Add(ol.Channel);
+                }
+            }
+
+            foreach (var al in allist)
+            {
+                foreach (var ol in ownlist)
+                {
+                    if (al == ol)
+                    {
+                        allist.Remove(ol);
+                    }
+                }
+            }
+            return View(allist);
+        }
+
+        public List<string> ChannelList()
+        {
+            List<string> allist = new List<string>();
+            allist.Add("Svt");
+            allist.Add("Tv3");
+            allist.Add("Tv4");
+            allist.Add("Kanal 5");
+            allist.Add("Tv6");
+            return allist;
+        }
+
+        public ActionResult EditFavorite()
+        {
             return View();
         }
 
