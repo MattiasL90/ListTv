@@ -32,11 +32,12 @@ namespace ListTv.Controllers
             }
             else if (Login(uname, pword) == 2)
             {
-                foreach (var p in proglist)
-                {
                     foreach (var l in plist)
                     {
-                        if (l.Channel == GetChannel(p.ChannelId.Value))
+                    foreach (var p in proglist)
+                    {
+                        string x = GetChannel(p.ChannelId.Value);
+                        if (l.Channel == GetChannel(p.ChannelId.Value) && l.Username == uname)
                         {
                             ProgramVM o = new ProgramVM();
                             if (p.Date == date)
@@ -48,10 +49,11 @@ namespace ListTv.Controllers
                                 o.Date = p.Date;
                                 o.Length = p.Length;
                                 o.Info = p.Info;
+                                personlist.Add(o);
                             }
-                            personlist.Add(o);
                         }
                     }
+                    
                 }
                 return View(personlist);
             }
@@ -61,6 +63,51 @@ namespace ListTv.Controllers
             }
 
         }
+
+        //public ActionResult PrivateList(DateTime date, string uname, string pword)
+        //{
+        //    ProgramsController pc = new ProgramsController();
+        //    var proglist = pc.SendList();
+        //    PersonalListsController pl = new PersonalListsController();
+        //    var plist = pl.SendList();
+        //    List<ProgramVM> personlist = new List<ProgramVM>();
+
+        //    if (Login(uname, pword) == 1)
+        //    {
+        //        return View("Admin");
+        //    }
+        //    else if (Login(uname, pword) == 2)
+        //    {
+        //        foreach (var p in proglist)
+        //        {
+        //            foreach (var l in plist)
+        //            {
+        //                string x = GetChannel(p.ChannelId.Value);
+        //                if (l.Channel == GetChannel(p.ChannelId.Value) && l.Username == uname)
+        //                {
+        //                    ProgramVM o = new ProgramVM();
+        //                    if (p.Date == date)
+        //                    {
+        //                        o.Id = p.Id;
+        //                        o.ProgramName = p.ProgramName;
+        //                        o.Time = p.Time;
+        //                        o.ChannelId = p.ChannelId.Value;
+        //                        o.Date = p.Date;
+        //                        o.Length = p.Length;
+        //                        o.Info = p.Info;
+        //                    }
+        //                    personlist.Add(o);
+        //                }
+        //            }
+        //        }
+        //        return View(personlist);
+        //    }
+        //    else
+        //    {
+        //        return View("Fail");
+        //    }
+
+        //}
 
         public ActionResult Days(string date)
         {
@@ -137,8 +184,10 @@ namespace ListTv.Controllers
             int lType = 0;
             LoginsController lc = new LoginsController();
             var logins = lc.SendList();
+            string test = "";
             foreach (var l in logins)
             {
+                test = l.Username;
                 if (l.Username == uname && l.Password == pword)
                 {
                     lType = l.Type;
