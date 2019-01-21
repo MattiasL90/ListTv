@@ -20,15 +20,20 @@ namespace ListTv.Controllers
         
         public object UserName { get; }
 
-        public ActionResult PrivateList(DateTime date, string uname, string pword)
+        public object PassWord { get; }
+
+        public ActionResult PrivateList(string uname, string pword)
         {
             ProgramsController pc = new ProgramsController();
             var proglist = pc.SendList();
             PersonalListsController pl = new PersonalListsController();
             var plist = pl.SendList();
             List<ProgramVM> personlist = new List<ProgramVM>();
+            var dateAndTime = DateTime.Now;
+            var datee = dateAndTime.Date;
 
             ViewBag.UserName = uname;
+            ViewBag.PassWord = pword;
 
             if (Login(uname, pword) == 1)
             {
@@ -44,7 +49,7 @@ namespace ListTv.Controllers
                         if (l.Channel == GetChannel(p.ChannelId.Value) && l.Username == uname)
                         {
                             ProgramVM o = new ProgramVM();
-                            if (p.Date == date)
+                            if (p.Date == datee)
                             {
                                 o.Id = p.Id;
                                 o.ProgramName = p.ProgramName;
@@ -68,61 +73,13 @@ namespace ListTv.Controllers
 
         }
 
-        //public ActionResult PrivateList(DateTime date, string uname, string pword)
-        //{
-        //    ProgramsController pc = new ProgramsController();
-        //    var proglist = pc.SendList();
-        //    PersonalListsController pl = new PersonalListsController();
-        //    var plist = pl.SendList();
-        //    List<ProgramVM> personlist = new List<ProgramVM>();
-
-        //    if (Login(uname, pword) == 1)
-        //    {
-        //        return View("Admin");
-        //    }
-        //    else if (Login(uname, pword) == 2)
-        //    {
-        //        foreach (var p in proglist)
-        //        {
-        //            foreach (var l in plist)
-        //            {
-        //                string x = GetChannel(p.ChannelId.Value);
-        //                if (l.Channel == GetChannel(p.ChannelId.Value) && l.Username == uname)
-        //                {
-        //                    ProgramVM o = new ProgramVM();
-        //                    if (p.Date == date)
-        //                    {
-        //                        o.Id = p.Id;
-        //                        o.ProgramName = p.ProgramName;
-        //                        o.Time = p.Time;
-        //                        o.ChannelId = p.ChannelId.Value;
-        //                        o.Date = p.Date;
-        //                        o.Length = p.Length;
-        //                        o.Info = p.Info;
-        //                    }
-        //                    personlist.Add(o);
-        //                }
-        //            }
-        //        }
-        //        return View(personlist);
-        //    }
-        //    else
-        //    {
-        //        return View("Fail");
-        //    }
-
-        //}
         
         public ActionResult Days(string date)
         {
-            //DataBaseTvEntities dbtv = new DataBaseTvEntities(); 
             DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
-            //var program = (from cnl in dbtv.Channel
-            //                join prg in dbtv.Program on cnl.Id equals prg.ChannelId
-            //                select new { cnl.ChannelName, prg.ProgramName, prg.Time, prg.Date, prg.Length }).ToList();
 
             foreach (var p in program)
             {
@@ -211,9 +168,10 @@ namespace ListTv.Controllers
             return list;
         }
 
-        public ActionResult AddFavorite(string uname)
+        public ActionResult AddFavorite(string uname, string pword)
         {
             ViewBag.UserName = uname;
+            ViewBag.PassWord = pword;
 
             PersonalListsController plc = new PersonalListsController();
             var plist = plc.SendList();
@@ -242,7 +200,7 @@ namespace ListTv.Controllers
             return View(finallist);
         }
 
-        public ActionResult AddedFavorite(string uname, string channl)
+        public ActionResult AddedFavorite(string uname, string pword, string channl)
         {
             DataBaseTvEntities db = new DataBaseTvEntities();
             if (ModelState.IsValid)
@@ -254,75 +212,78 @@ namespace ListTv.Controllers
                 };
                 db.PersonalList.Add(perlis);
                 db.SaveChanges();
-                ViewBag.Username = uname;
-                return RedirectToAction("AddFavorite");
+                ViewBag.UserName = uname;
+                ViewBag.PassWord = pword;
+                return RedirectToAction("AddFavorite", new { uname , pword });
             }
             return View();
-            //PersonalListsController plc = new PersonalListsController();
-            //var plist = plc.SendList();
-            //List<string> allist = ChannelList();
-            //List<string> ownlist = new List<string>();
-            //foreach (var ol in plist)
-            //{
-            //    if (ol.Username == uname)
-            //    {
-            //        ownlist.Add(ol.Channel);
-            //    }
-            //}
-            //List<string> finallist = ChannelList();
-            //foreach (var o in ownlist)
-            //{
-            //    foreach (var a in allist)
-            //    {
-            //        if (a == o)
-            //        {
-            //            finallist.RemoveAll(x => ((string)x) == o);
-            //        }
-            //    }
-            //}
-            //return View(finallist);
         }
 
-        //public ActionResult AddedFavoriterwetfergr(string uname, [Bind(Include = "Id,Username,Channel")] PersonalList personalList)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.PersonalList.Add(personalList);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //        ViewBag.Username = new SelectList(db.Login, "Username", "Password", personalList.Username);
-        //        return View(personalList);
-        //    }
-        //    else
-        //    {
-        //        PersonalListsController plc = new PersonalListsController();
-        //        var plist = plc.SendList();
-        //        List<string> allist = ChannelList();
-        //        List<string> ownlist = new List<string>();
-        //        foreach (var ol in plist)
-        //        {
-        //            if (ol.Username == uname)
-        //            {
-        //                ownlist.Add(ol.Channel);
-        //            }
-        //        }
-        //        List<string> finallist = ChannelList();
-        //        foreach (var o in ownlist)
-        //        {
-        //            foreach (var a in allist)
-        //            {
-        //                if (a == o)
-        //                {
-        //                    finallist.RemoveAll(x => ((string)x) == o);
-        //                }
-        //            }
-        //        }
-        //        return View(finallist);
-        //    }
-        //}
+        public ActionResult DeleteFavorite(string uname,  string pword, int channl)
+        {
+            DataBaseTvEntities db = new DataBaseTvEntities();
+            string chn = GetChannel(channl);
+            int cid = GetCid(uname, GetChannel(channl));
+            if (ModelState.IsValid)
+            {
+                var del = (from c in db.PersonalList
+                           where c.Id == cid
+                           select c).FirstOrDefault();
+                db.PersonalList.Remove(del);
+                db.SaveChanges();
+            }
 
+            ProgramsController pc = new ProgramsController();
+            var proglist = pc.SendList();
+            PersonalListsController pl = new PersonalListsController();
+            var plist = pl.SendList();
+            List<ProgramVM> personlist = new List<ProgramVM>();
+            var dateAndTime = DateTime.Now;
+            var datee = dateAndTime.Date;
 
+            ViewBag.UserName = uname;
+            ViewBag.PassWord = pword;
 
+            foreach (var l in plist)
+            {
+                foreach (var p in proglist)
+                {
+                    string x = GetChannel(p.ChannelId.Value);
+                    if (l.Channel == GetChannel(p.ChannelId.Value) && l.Username == uname)
+                    {
+                        ProgramVM o = new ProgramVM();
+                        if (p.Date == datee)
+                        {
+                            o.Id = p.Id;
+                            o.ProgramName = p.ProgramName;
+                            o.Time = p.Time;
+                            o.ChannelId = p.ChannelId.Value;
+                            o.Date = p.Date;
+                            o.Length = p.Length;
+                            o.Info = p.Info;
+                            personlist.Add(o);
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("PrivateList", new { uname, pword });
+        }
+
+        public int GetCid(string uname, string chn)
+        {
+            int id = 0;
+            PersonalListsController pl = new PersonalListsController();
+            var plist = pl.SendList();
+
+            foreach (var item in plist)
+            {
+                if (item.Username == uname && item.Channel == chn)
+                {
+                    id = item.Id;
+                }
+            }
+            return id;
+        }
 
         public List<string> ChannelList()
         {
@@ -339,35 +300,5 @@ namespace ListTv.Controllers
         {
             return View();
         }
-
-
-        //public ActionResult Login(string uname, string pword)
-        //{
-        //    LoginsController lc = new LoginsController();
-        //    PersonalListsController pc = new PersonalListsController();
-        //    ProgramsController progc = new ProgramsController();
-        //    List<ProgramVM> personallist = new List<ProgramVM>();
-        //    var progs = progc.SendList();
-        //    var plist = pc.SendList();
-
-        //    var logins = lc.SendList();
-        //    foreach (var l in logins)
-        //    {
-        //        if (l.Username == uname && l.Password == pword)
-        //        {
-        //            foreach (var p in plist)
-        //            {
-        //                foreach (var y in progs)
-        //                {
-        //                    if (p.Channel == y.ChannelName)
-        //                    {
-
-        //                    }
-        //                }
-        //            }     
-        //        }
-        //    }
-        //    return View();
-        //}
     }
 }

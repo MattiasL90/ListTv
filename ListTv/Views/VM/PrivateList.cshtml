@@ -46,13 +46,9 @@
                 i++;
                 b = channel.ChannelId;
             }
-            //else if (channel.ChannelId != b)
-            //{
-            //    channels.Add(channel.ChannelId);
-            //    b = channel.ChannelId;
-            //}
         }
     }
+
 
     <h1>@ViewBag.Username</h1>
 
@@ -61,20 +57,28 @@
             {
                 int pid = item;
         <div class="kanal">
-            <h2>@Rename(item)</h2>
+            <div>
+                <h2>@Rename(item)</h2>
+                <form method="get" action="@Url.Action("DeleteFavorite", "VM")">
+                    <input type="hidden" id="pword" value="@ViewBag.PassWord" name="pword" />
+                    <input type="hidden" id="channl" value=@item name="channl" />
+                    <button type="submit" name="uname" id="uname" value="@ViewBag.UserName">Ta bort</button>
+                </form>
+            </div>
             <table>
                 <tr>
                     <th>Program</th>
                     <th>Tid</th>
                 </tr>
                 @foreach (var p in Model)
+
                         {
                             if (p.ChannelId == pid)
                             {
-                <tr>
-                    <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
-                    <td> @p.Time </td>
-                </tr>
+                                <tr>
+                                  <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
+                                  <td> @p.Time </td>
+                                </tr>
                             }
                         }
             </table>
