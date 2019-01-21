@@ -6,11 +6,15 @@
 
 @model List<string>
 
-<div>
-    <select>
-        @foreach (var item in Model)
+               <div>
+                   <form method="get" action="@Url.Action("AddFavorite", "VM")">
+                       <select>
+                           @foreach (var item in Model)
         {
-            <option value="@item">@item</option>
+                           <option value="@item">@item</option>
         }
-    </select>
-</div>
+                       </select>
+                       <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Lägg till</button>
+                       </form>
+
+               </div>

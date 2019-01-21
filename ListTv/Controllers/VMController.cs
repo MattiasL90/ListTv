@@ -240,8 +240,48 @@ namespace ListTv.Controllers
             return View(finallist);
         }
 
+        public ActionResult AddedFavorite(string uname)
+        {
+            //using (SqlConnection connect = new SqlConnection(connections))
+            //{
+            //    string query = "Insert Into Personnel_Data (Name, StreetAddress, City, State, Zip, HomePhone, WorkPhone) Values(@name, @address, @city, @state, @zip, @contactHPhone, @contactWPhone)";
 
-       
+            //    SqlCommand command = new SqlCommand(query, connect);
+            //    command.Parameters.AddWithValue("name", Name);
+            //    connect.Open();
+            //    command.ExecuteNonQuery();
+            //}
+
+
+            PersonalListsController plc = new PersonalListsController();
+            var plist = plc.SendList();
+            List<string> allist = ChannelList();
+            List<string> ownlist = new List<string>();
+            foreach (var ol in plist)
+            {
+                if (ol.Username == uname)
+                {
+                    ownlist.Add(ol.Channel);
+                }
+            }
+
+            List<string> finallist = ChannelList();
+
+            foreach (var o in ownlist)
+            {
+                foreach (var a in allist)
+                {
+                    if (a == o)
+                    {
+                        finallist.RemoveAll(x => ((string)x) == o);
+                    }
+                }
+            }
+            return View(finallist);
+        }
+
+
+
 
         public List<string> ChannelList()
         {
