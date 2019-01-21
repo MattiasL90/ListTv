@@ -18,6 +18,8 @@ namespace ListTv.Controllers
         //    return View();
         //}
 
+        public object UserName { get; }
+
         public ActionResult PrivateList(DateTime date, string uname, string pword)
         {
             ProgramsController pc = new ProgramsController();
@@ -26,6 +28,7 @@ namespace ListTv.Controllers
             var plist = pl.SendList();
             List<ProgramVM> personlist = new List<ProgramVM>();
 
+            ViewBag.UserName = uname;
 
             if (Login(uname, pword) == 1)
             {
@@ -109,7 +112,7 @@ namespace ListTv.Controllers
         //    }
 
         //}
-
+        
         public ActionResult Days(string date)
         {
             //DataBaseTvEntities dbtv = new DataBaseTvEntities(); 
@@ -212,43 +215,42 @@ namespace ListTv.Controllers
         {
             PersonalListsController plc = new PersonalListsController();
             var plist = plc.SendList();
-            List<ProgTable> allist = ChannelList();
-            List<ProgTable> ownlist = new List<ProgTable>();
+            List<string> allist = ChannelList();
+            List<string> ownlist = new List<string>();
             foreach (var ol in plist)
             {
                 if (ol.Username == uname)
                 {
-                    ProgTable p = new ProgTable()
-                    {
-                        Cname = ol.Channel
-                    };
-                    ownlist.Add(p);
+                    ownlist.Add(ol.Channel);
                 }
             }
 
-            foreach (var al in allist)
+            List<string> finallist = ChannelList();
+
+            foreach (var o in ownlist)
             {
-                foreach (var ol in ownlist)
+                foreach (var a in allist)
                 {
-                    if (al.Cname == ol.Cname)
+                    if (a == o)
                     {
-                        allist.Remove(al);
+                        finallist.RemoveAll(x => ((string)x) == o);
                     }
                 }
             }
-            return View(allist);
+            return View(finallist);
         }
 
-        public List<ProgTable> ChannelList()
+
+       
+
+        public List<string> ChannelList()
         {
-            List<ProgTable> allist = new List<ProgTable>
-            {
-                new ProgTable{Cname = "Svt"},
-                new ProgTable{Cname = "Tv3"},
-                new ProgTable{Cname = "Tv4"},
-                new ProgTable{Cname = "Kanal 5"},
-                new ProgTable{Cname = "Tv6"}
-            };
+            List<string> allist = new List<string>();
+            allist.Add("Svt");
+            allist.Add("Tv3");
+            allist.Add("Tv4");
+            allist.Add("Kanal 5");
+            allist.Add("Tv6");
             return allist;
         }
 

@@ -53,7 +53,7 @@
     }
 }
 
-
+<h1>@ViewBag.Username</h1>
 
         <div id="main">
             @foreach (var item in channels)
@@ -81,7 +81,7 @@
             }
 
             <div id="options">
-                @Html.ActionLink("Lägg till kanal", "EditFavorite", "VM", null)
+                @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
 
             </div>
         </div>
