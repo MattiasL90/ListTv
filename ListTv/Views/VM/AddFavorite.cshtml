@@ -7,14 +7,22 @@
 @model List<string>
 
                <div>
-                   <form method="get" action="@Url.Action("AddFavorite", "VM")">
-                       <select>
+
+                  
+
+                   <form method="get" action="@Url.Action("AddedFavorite", "VM")">
+                       <select name="channl">
                            @foreach (var item in Model)
-        {
+                {
                            <option value="@item">@item</option>
-        }
+                }
                        </select>
-                       <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Lägg till</button>
-                       </form>
+                       
+                       <button type="submit" name="uname" id="uname" value="@ViewBag.UserName">Lägg till</button>
+                   </form>
 
                </div>
+
+
+
+

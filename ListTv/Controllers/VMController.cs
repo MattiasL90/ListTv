@@ -17,7 +17,7 @@ namespace ListTv.Controllers
         //{
         //    return View();
         //}
-
+        
         public object UserName { get; }
 
         public ActionResult PrivateList(DateTime date, string uname, string pword)
@@ -213,6 +213,8 @@ namespace ListTv.Controllers
 
         public ActionResult AddFavorite(string uname)
         {
+            ViewBag.UserName = uname;
+
             PersonalListsController plc = new PersonalListsController();
             var plist = plc.SendList();
             List<string> allist = ChannelList();
@@ -240,45 +242,84 @@ namespace ListTv.Controllers
             return View(finallist);
         }
 
-        public ActionResult AddedFavorite(string uname)
+        public ActionResult AddedFavorite(string uname, string channl)
         {
-            //using (SqlConnection connect = new SqlConnection(connections))
+            DataBaseTvEntities db = new DataBaseTvEntities();
+            if (ModelState.IsValid)
+            {
+                PersonalList perlis = new PersonalList()
+                {
+                    Username = uname,
+                    Channel = channl
+                };
+                db.PersonalList.Add(perlis);
+                db.SaveChanges();
+                ViewBag.Username = uname;
+                return RedirectToAction("AddFavorite");
+            }
+            return View();
+            //PersonalListsController plc = new PersonalListsController();
+            //var plist = plc.SendList();
+            //List<string> allist = ChannelList();
+            //List<string> ownlist = new List<string>();
+            //foreach (var ol in plist)
             //{
-            //    string query = "Insert Into Personnel_Data (Name, StreetAddress, City, State, Zip, HomePhone, WorkPhone) Values(@name, @address, @city, @state, @zip, @contactHPhone, @contactWPhone)";
-
-            //    SqlCommand command = new SqlCommand(query, connect);
-            //    command.Parameters.AddWithValue("name", Name);
-            //    connect.Open();
-            //    command.ExecuteNonQuery();
+            //    if (ol.Username == uname)
+            //    {
+            //        ownlist.Add(ol.Channel);
+            //    }
             //}
-
-
-            PersonalListsController plc = new PersonalListsController();
-            var plist = plc.SendList();
-            List<string> allist = ChannelList();
-            List<string> ownlist = new List<string>();
-            foreach (var ol in plist)
-            {
-                if (ol.Username == uname)
-                {
-                    ownlist.Add(ol.Channel);
-                }
-            }
-
-            List<string> finallist = ChannelList();
-
-            foreach (var o in ownlist)
-            {
-                foreach (var a in allist)
-                {
-                    if (a == o)
-                    {
-                        finallist.RemoveAll(x => ((string)x) == o);
-                    }
-                }
-            }
-            return View(finallist);
+            //List<string> finallist = ChannelList();
+            //foreach (var o in ownlist)
+            //{
+            //    foreach (var a in allist)
+            //    {
+            //        if (a == o)
+            //        {
+            //            finallist.RemoveAll(x => ((string)x) == o);
+            //        }
+            //    }
+            //}
+            //return View(finallist);
         }
+
+        //public ActionResult AddedFavoriterwetfergr(string uname, [Bind(Include = "Id,Username,Channel")] PersonalList personalList)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.PersonalList.Add(personalList);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //        ViewBag.Username = new SelectList(db.Login, "Username", "Password", personalList.Username);
+        //        return View(personalList);
+        //    }
+        //    else
+        //    {
+        //        PersonalListsController plc = new PersonalListsController();
+        //        var plist = plc.SendList();
+        //        List<string> allist = ChannelList();
+        //        List<string> ownlist = new List<string>();
+        //        foreach (var ol in plist)
+        //        {
+        //            if (ol.Username == uname)
+        //            {
+        //                ownlist.Add(ol.Channel);
+        //            }
+        //        }
+        //        List<string> finallist = ChannelList();
+        //        foreach (var o in ownlist)
+        //        {
+        //            foreach (var a in allist)
+        //            {
+        //                if (a == o)
+        //                {
+        //                    finallist.RemoveAll(x => ((string)x) == o);
+        //                }
+        //            }
+        //        }
+        //        return View(finallist);
+        //    }
+        //}
 
 
 
