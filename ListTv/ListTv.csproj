@@ -170,9 +170,14 @@
     <Compile Include="Models\Program.cs">
       <DependentUpon>AdoTv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Puff.cs">
+      <DependentUpon>AdoTv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PuffsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ProgramVM.cs" />
     <Compile Include="ViewModels\ProgTable.cs" />
+    <Compile Include="ViewModels\PuffEdit.cs" />
     <Compile Include="ViewModels\ShowMore.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +259,11 @@
     <Content Include="Views\VM\PrivateList.cshtml" />
     <Content Include="Views\VM\AddFavorite.cshtml" />
     <Content Include="Views\VM\EditFavorite.cshtml" />
+    <Content Include="Views\Puffs\Create.cshtml" />
+    <Content Include="Views\Puffs\Delete.cshtml" />
+    <Content Include="Views\Puffs\Details.cshtml" />
+    <Content Include="Views\Puffs\Edit.cshtml" />
+    <Content Include="Views\Puffs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

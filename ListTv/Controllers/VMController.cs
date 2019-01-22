@@ -22,6 +22,8 @@ namespace ListTv.Controllers
 
         public object PassWord { get; }
 
+        public object PuffList { get; }
+
         public ActionResult PrivateList(string uname, string pword)
         {
             ProgramsController pc = new ProgramsController();
@@ -37,6 +39,9 @@ namespace ListTv.Controllers
 
             if (Login(uname, pword) == 1)
             {
+                PuffsController puc = new PuffsController();
+                List<Puff> puffen = puc.SendList();
+                ViewBag.PuffList = puffen;
                 return View("Admin");
             }
             else if (Login(uname, pword) == 2)
@@ -296,9 +301,23 @@ namespace ListTv.Controllers
             return allist;
         }
 
-        public ActionResult EditFavorite()
-        {
-            return View();
-        }
+        //public void ChangePuff(int puffid, int progid)
+        //{
+        //    DataBaseTvEntities db = new DataBaseTvEntities();
+        //    if (ModelState.IsValid)
+        //    {
+        //        var del = (from c in db.Puff
+        //                   where c.Id == cid
+        //                   select c).FirstOrDefault();
+        //        db.Puff.;
+        //        db.SaveChanges();
+        //    }
+
+        //}
+
+        //public ActionResult EditFavorite()
+        //{
+        //    return View();
+        //}
     }
 }

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ListTv.Models.Puff>
+
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Program.ProgramName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Program.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Program.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Program.Info)
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program.ProgramName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program.Date)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program.Time)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program.Info)
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pid }) |
+            </td>
+        </tr>
+}
+
+    </table>
+
+    @Html.ActionLink("Tillbaka", "Index", "Programs" )
+
+
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Program.ProgramName)
+
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Program.ProgramName)
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Pid }) |
+
+                </td>
+            </tr>
+        }
+
+        </table>*@

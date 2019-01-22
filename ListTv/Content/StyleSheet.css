@@ -11,3 +11,10 @@
 .options {
     float: right !important;
 }
+
+#plist{
+    margin-left: 0px;
+    position: fixed;
+    left: 0px;
+    padding-left: 0px;
+}

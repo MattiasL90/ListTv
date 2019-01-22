@@ -41,6 +41,13 @@
           <Property Name="Length" Type="time" Precision="4" />
           <Property Name="Info" Type="nchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Puff">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Progid" Type="int" />
+        </EntityType>
         <Association Name="FK_Program_ToTable">
           <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
@@ -65,11 +72,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PuffFK">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Puff" Type="Self.Puff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puff">
+              <PropertyRef Name="Progid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DataBaseTvModelStoreContainer">
           <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalList" EntityType="Self.PersonalList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puff" EntityType="Self.Puff" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Program_ToTable" Association="Self.FK_Program_ToTable">
             <End Role="Channel" EntitySet="Channel" />
             <End Role="Program" EntitySet="Program" />
@@ -77,6 +97,10 @@
           <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
             <End Role="Login" EntitySet="Login" />
             <End Role="PersonalList" EntitySet="PersonalList" />
+          </AssociationSet>
+          <AssociationSet Name="PuffFK" Association="Self.PuffFK">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Puff" EntitySet="Puff" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -104,6 +128,7 @@
           <Property Name="Length" Type="Time" Precision="4" />
           <NavigationProperty Name="Channel" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Channel" />
           <Property Name="Info" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Puff" Relationship="DataBaseTvModel.PuffFK" FromRole="Program" ToRole="Puff" />
         </EntityType>
         <Association Name="FK_Program_ToTable">
           <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
@@ -129,6 +154,11 @@
           <AssociationSet Name="FK_Table_ToTable1" Association="DataBaseTvModel.FK_Table_ToTable1">
             <End Role="Login" EntitySet="Login" />
             <End Role="PersonalList" EntitySet="PersonalList" />
+          </AssociationSet>
+          <EntitySet Name="Puff" EntityType="DataBaseTvModel.Puff" />
+          <AssociationSet Name="PuffFK" Association="DataBaseTvModel.PuffFK">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Puff" EntitySet="Puff" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Login">
@@ -158,6 +188,26 @@
             </Principal>
             <Dependent Role="PersonalList">
               <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Puff">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Progid" Type="Int32" />
+          <NavigationProperty Name="Program" Relationship="DataBaseTvModel.PuffFK" FromRole="Puff" ToRole="Program" />
+        </EntityType>
+        <Association Name="PuffFK">
+          <End Type="DataBaseTvModel.Program" Role="Program" Multiplicity="0..1" />
+          <End Type="DataBaseTvModel.Puff" Role="Puff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puff">
+              <PropertyRef Name="Progid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -204,6 +254,14 @@
                 <ScalarProperty Name="Channel" ColumnName="Channel" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puff">
+            <EntityTypeMapping TypeName="DataBaseTvModel.Puff">
+              <MappingFragment StoreEntitySet="Puff">
+                <ScalarProperty Name="Progid" ColumnName="Progid" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

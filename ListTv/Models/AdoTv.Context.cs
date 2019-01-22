@@ -29,5 +29,6 @@ namespace ListTv.Models
         public virtual DbSet<Program> Program { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<PersonalList> PersonalList { get; set; }
+        public virtual DbSet<Puff> Puff { get; set; }
     }
 }
