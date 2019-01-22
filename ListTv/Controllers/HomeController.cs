@@ -15,7 +15,8 @@ namespace ListTv.Controllers
         //{
         //    return View();
         //}
-
+        public object PuffList { get; }
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -33,14 +34,12 @@ namespace ListTv.Controllers
         public ActionResult Index()
         {
             string date = "2019-01-21";
-            //DataBaseTvEntities dbtv = new DataBaseTvEntities(); 
             DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
-            //var program = (from cnl in dbtv.Channel
-            //                join prg in dbtv.Program on cnl.Id equals prg.ChannelId
-            //                select new { cnl.ChannelName, prg.ProgramName, prg.Time, prg.Date, prg.Length }).ToList();
+            VMController vmc = new VMController();
+            ViewBag.PuffList = vmc.GetPuff();
 
             foreach (var p in program)
             {

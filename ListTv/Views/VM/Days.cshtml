@@ -13,115 +13,144 @@
     foreach (var m in Model)
     {
         <h2>@m.Date</h2>
+        break;
+    }
+}
+@helper Rename(int id)
+{
+
+    if (id == 1)
+    {
+        <p>Svt</p>;
+    }
+    else if (id == 2)
+    {
+        <p>Tv3</p>;
+    }
+    else if (id == 4)
+    {
+        <pp>Tv4</pp>;
+    }
+    else if (id == 5)
+    {
+        <p>Tv6</p>;
+    }
+    else
+    {
+        <p>Kanal 5</p>;
     }
 }
 
 
-        <div id="puffar">
-            @foreach (var item in ((SelectList)ViewBag.PuffList.ProgramName))
-            {
-                <div class="puff">
-                    <p>@item.Value</p>
-                </div>
-            }
+    <div class="puffar">
+        @foreach (var item in ViewBag.PuffList)
+        {
+        <div class="puff">
+            <p>@item.ProgramName</p>
+            <p>@Rename(item.ChannelId)</p>
+            <p>@item.Date</p>
+            <p>@item.Time</p>
+            <p>@item.Info</p>
         </div>
+        }
+    </div>
 
-<div id="main">
+    <div id="main">
 
 
-    <div class="kanal">
-        <h2>Svt</h2>
-        <table>
-            <tr>
-                <th>Program</th>
-                <th>Tid</th>
-            </tr>
-            @foreach (var p in Model)
-            {
-                if (p.ChannelId == 1)
+        <div class="kanal">
+            <h2>Svt</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
-                    </tr>
+                    if (p.ChannelId == 1)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                            <td>@p.Time</td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
-    </div>
-    <div class="kanal">
-        <h2>Tv3</h2>
-        <table>
-            <tr>
-                <th>Program</th>
-                <th>Tid</th>
-            </tr>
-            @foreach (var p in Model)
-            {
-                if (p.ChannelId == 2)
+            </table>
+        </div>
+        <div class="kanal">
+            <h2>Tv3</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
-                    </tr>
+                    if (p.ChannelId == 2)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                            <td>@p.Time</td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
-    </div>
-    <div class="kanal">
-        <h2>Tv4</h2>
-        <table>
-            <tr>
-                <th>Program</th>
-                <th>Tid</th>
-            </tr>
-            @foreach (var p in Model)
-            {
-                if (p.ChannelId == 4)
+            </table>
+        </div>
+        <div class="kanal">
+            <h2>Tv4</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
-                    </tr>
+                    if (p.ChannelId == 4)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                            <td>@p.Time</td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
-    </div>
-    <div class="kanal">
-        <h2>Kanal 5</h2>
-        <table>
-            <tr>
-                <th>Program</th>
-                <th>Tid</th>
-            </tr>
-            @foreach (var p in Model)
-            {
-                if (p.ChannelId == 6)
+            </table>
+        </div>
+        <div class="kanal">
+            <h2>Kanal 5</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
-                    </tr>
+                    if (p.ChannelId == 6)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                            <td>@p.Time</td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
-    </div>
-    <div class="kanal">
-        <h2>Tv6</h2>
-        <table>
-            <tr>
-                <th>Program</th>
-                <th>Tid</th>
-            </tr>
-            @foreach (var p in Model)
-            {
-                if (p.ChannelId == 5)
+            </table>
+        </div>
+        <div class="kanal">
+            <h2>Tv6</h2>
+            <table>
+                <tr>
+                    <th>Program</th>
+                    <th>Tid</th>
+                </tr>
+                @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
-                    </tr>
+                    if (p.ChannelId == 5)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                            <td>@p.Time</td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
+            </table>
+        </div>
     </div>
-</div>

@@ -33,7 +33,7 @@ namespace ListTv.Controllers
             List<ProgramVM> personlist = new List<ProgramVM>();
             var dateAndTime = DateTime.Now;
             var datee = dateAndTime.Date;
-
+            ViewBag.PuffList = GetPuff();
             ViewBag.UserName = uname;
             ViewBag.PassWord = pword;
 
@@ -42,7 +42,7 @@ namespace ListTv.Controllers
                 PuffsController puc = new PuffsController();
                 List<Puff> puffen = puc.SendList();
                 ViewBag.PuffList = puffen;
-                return View("Admin");
+                return RedirectToAction("Index", "Programs");
             }
             else if (Login(uname, pword) == 2)
             {
@@ -73,19 +73,22 @@ namespace ListTv.Controllers
             }
             else
             {
-                return View("Fail");
+                return RedirectToAction("Fail", "VM");
             }
-
+        }
+        public ActionResult Fail()
+        {
+            return View();
         }
 
-        
+
         public ActionResult Days(string date)
         {
             DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
-            ViewBag.puffList = GetPuff();
+            ViewBag.PuffList = GetPuff();
 
             foreach (var p in program)
             {

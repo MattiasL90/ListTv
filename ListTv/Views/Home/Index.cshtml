@@ -6,11 +6,43 @@
 
 
 
-<div id=" puff">
+@helper Rename(int id)
+{
+
+    if (id == 1)
+    {
+        <p>Svt</p>;
+    }
+    else if (id == 2)
+    {
+        <p>Tv3</p>;
+    }
+    else if (id == 4)
+    {
+        <pp>Tv4</pp>;
+    }
+    else if (id == 5)
+    {
+        <p>Tv6</p>;
+    }
+    else
+    {
+        <p>Kanal 5</p>;
+    }
+}
 
 
-
-
+<div class="puffar">
+    @foreach (var item in ViewBag.PuffList)
+    {
+        <div class="puff">
+            <p>@item.ProgramName</p>
+            <p>@Rename(item.ChannelId)</p>
+            <p>@item.Date</p>
+            <p>@item.Time</p>
+            <p>@item.Info</p>
+        </div>
+    }
 </div>
 
 

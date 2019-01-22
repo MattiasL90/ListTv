@@ -1,41 +1,46 @@
 ﻿@model IEnumerable<ListTv.Models.Program>
 
-@{
+    @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    }
 
-<h2>Program</h2>
-<div id="plist">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgramName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Length)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Channel.ChannelName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Info)
-            </th>
-        </tr>
+    <h2>Program</h2>
+    <div id="puffss">
 
-        @foreach (var item in Model)
+        @Html.ActionLink("Ändra puffar", "Index", "Puffs")
+
+    </div>
+    <div id="plist">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgramName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Length)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Channel.ChannelName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Info)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -67,10 +72,5 @@
             </tr>
         }
 
-    </table>
-</div>
-<div id="puffss">
-
-     @Html.ActionLink("Ändra puffar", "Index", "Puffs")
-
-</div>
+        </table>
+    </div>

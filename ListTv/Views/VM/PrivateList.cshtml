@@ -8,54 +8,91 @@
 @model List<ListTv.ViewModels.ProgramVM>
 
 
-    @helper Rename(int id)
+@helper Rename(int id)
 {
 
     if (id == 1)
     {
-    <h2>Svt</h2>;
+        <h2>Svt</h2>;
     }
     else if (id == 2)
     {
-    <h2>Tv3</h2>;
+        <h2>Tv3</h2>;
     }
     else if (id == 4)
     {
-    <h2>Tv4</h2>;
+        <h2>Tv4</h2>;
     }
     else if (id == 5)
     {
-    <h2>Tv6</h2>;
+        <h2>Tv6</h2>;
     }
     else
     {
-    <h2>Kanal 5</h2>;
+        <h2>Kanal 5</h2>;
     }
-    }
+}
 
-    @{
+@{
 
-        List<int> channels = new List<int>();
-        int i = 0;
-        int b = 0;
-        foreach (var channel in Model)
+    List<int> channels = new List<int>();
+    int i = 0;
+    int b = 0;
+    foreach (var channel in Model)
+    {
+        if (i == 0 || channel.ChannelId != b)
         {
-            if (i == 0||channel.ChannelId != b)
-            {
-                channels.Add(channel.ChannelId);
-                i++;
-                b = channel.ChannelId;
-            }
+            channels.Add(channel.ChannelId);
+            i++;
+            b = channel.ChannelId;
         }
     }
+}
+@helper RenameChan(int id)
+{
+
+    if (id == 1)
+    {
+        <p>Svt</p>;
+    }
+    else if (id == 2)
+    {
+        <p>Tv3</p>;
+    }
+    else if (id == 4)
+    {
+        <pp>Tv4</pp>;
+    }
+    else if (id == 5)
+    {
+        <p>Tv6</p>;
+    }
+    else
+    {
+        <p>Kanal 5</p>;
+    }
+}
+
+ <h1>@ViewBag.Username</h1>
+
+<div class="puffar">
+    @foreach (var item in ViewBag.PuffList)
+    {
+        <div class="puff">
+            <p>@item.ProgramName</p>
+            <p>@RenameChan(item.ChannelId)</p>
+            <p>@item.Date</p>
+            <p>@item.Time</p>
+            <p>@item.Info</p>
+        </div>
+    }
+</div>
 
 
-    <h1>@ViewBag.Username</h1>
-
-    <div id="main">
-        @foreach (var item in channels)
-            {
-                int pid = item;
+<div id="main">
+    @foreach (var item in channels)
+    {
+        int pid = item;
         <div class="kanal">
             <div>
                 <h2>@Rename(item)</h2>
@@ -72,22 +109,22 @@
                 </tr>
                 @foreach (var p in Model)
 
-                        {
-                            if (p.ChannelId == pid)
-                            {
-                                <tr>
-                                  <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
-                                  <td> @p.Time </td>
-                                </tr>
-                            }
-                        }
+                {
+                    if (p.ChannelId == pid)
+                    {
+                        <tr>
+                            <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
+                            <td> @p.Time </td>
+                        </tr>
+                    }
+                }
             </table>
         </div>
-            }
+    }
 
-        <div id="options">
-            @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
+    <div id="options">
+        @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
 
-        </div>
     </div>
+</div>
 
