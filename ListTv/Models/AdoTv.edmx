@@ -33,13 +33,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProgramName" Type="nchar" MaxLength="50" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="50" />
           <Property Name="Time" Type="time" Precision="4" />
           <Property Name="Date" Type="date" />
           <Property Name="ChannelId" Type="int" />
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="Length" Type="time" Precision="4" />
-          <Property Name="Info" Type="nchar" MaxLength="200" />
+          <Property Name="Info" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Puff">
           <Key>
@@ -120,14 +120,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Time" Type="Time" Precision="4" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="ChannelId" Type="Int32" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Length" Type="Time" Precision="4" />
           <NavigationProperty Name="Channel" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Channel" />
-          <Property Name="Info" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Puff" Relationship="DataBaseTvModel.PuffFK" FromRole="Program" ToRole="Puff" />
         </EntityType>
         <Association Name="FK_Program_ToTable">

@@ -17,6 +17,15 @@
 }
 
 
+        <div id="puffar">
+            @foreach (var item in ((SelectList)ViewBag.PuffList.ProgramName))
+            {
+                <div class="puff">
+                    <p>@item.Value</p>
+                </div>
+            }
+        </div>
+
 <div id="main">
 
 

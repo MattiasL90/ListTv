@@ -111,10 +111,10 @@ namespace ListTv.Models
             {
                 return HttpNotFound();
             }
-            ViewBag.Progid = new SelectList(db.Program, "Id", "ProgramName", puff.Progid);
+            ViewBag.Progid = new SelectList(db.Program, "Id", "ProgramName", "Date", puff.Progid);
             return View(puff);
         }
-
+        
         // POST: Puffs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -128,9 +128,25 @@ namespace ListTv.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Progid = new SelectList(db.Program, "Id", "ProgramName", puff.Progid);
+            ViewBag.Progid = new SelectList(db.Program, "Id", "ProgramName", "Date", puff.Progid);
             return View(puff);
         }
+
+        //public string GetCname(int progid)
+        //{
+        //    ProgramsController pc = new ProgramsController();
+        //    var proglist = pc.SendList();
+        //    string puppy = "";
+
+        //    foreach (var item in proglist)
+        //    {
+        //        if (item.Id == progid)
+        //        {
+        //            puppy = Convert.ToString(item.Time);
+        //        }
+        //    }
+        //    return puppy;
+        //}
 
         // GET: Puffs/Delete/5
         public ActionResult Delete(int? id)

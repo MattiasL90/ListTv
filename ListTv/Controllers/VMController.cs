@@ -22,7 +22,7 @@ namespace ListTv.Controllers
 
         public object PassWord { get; }
 
-        public object PuffList { get; }
+        public object PuffList { get; } 
 
         public ActionResult PrivateList(string uname, string pword)
         {
@@ -85,6 +85,7 @@ namespace ListTv.Controllers
             ProgramsController pc = new ProgramsController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
+            ViewBag.puffList = GetPuff();
 
             foreach (var p in program)
             {
@@ -299,6 +300,35 @@ namespace ListTv.Controllers
             allist.Add("Kanal 5");
             allist.Add("Tv6");
             return allist;
+        }
+
+        public List<ProgramVM> GetPuff()
+        {
+            List<ProgramVM> pufflist = new List<ProgramVM>();
+            ProgramsController pc = new ProgramsController();
+            var proglist = pc.SendList();
+            PuffsController uff = new PuffsController();
+            var news = uff.SendList();
+
+            foreach (var n in news)
+            {
+                foreach (var p in proglist)
+                {
+                    if (n.Progid == p.Id)
+                    {
+                        ProgramVM o = new ProgramVM();
+                        o.Id = p.Id;
+                        o.ProgramName = p.ProgramName;
+                        o.Time = p.Time;
+                        o.ChannelId = p.ChannelId.Value;
+                        o.Date = p.Date;
+                        o.Length = p.Length;
+                        o.Info = p.Info;
+                        pufflist.Add(o);
+                    }
+                }
+            }
+            return pufflist;
         }
 
         //public void ChangePuff(int puffid, int progid)
