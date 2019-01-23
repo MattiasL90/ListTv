@@ -7,12 +7,12 @@
 @model List<ListTv.ViewModels.ShowMore>
 
 
-<div class="main">
+<div id="smore">
     <div>
         @foreach (var m in Model)
         {
-            <h2>@m.ProgramName</h2>
-            <b>@m.Date.ToString()</b>
+            <h2 class="hdate">@m.ProgramName</h2>
+            <p><b>@m.Date.ToString()</b></p>
             <p>Programmet börjar klockan @m.Time och varar i @m.Length.</p>
             <p>Det är ett program av typen @m.Category och sänds på @m.ChannelName.</p>
             <br />

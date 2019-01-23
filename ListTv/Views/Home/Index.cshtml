@@ -36,10 +36,10 @@
     @foreach (var item in ViewBag.PuffList)
     {
         <div class="puff">
-            <p>@item.ProgramName</p>
+            <p><b>@item.ProgramName</b></p>
             <p>@Rename(item.ChannelId)</p>
-            <p>@item.Date</p>
-            <p>@item.Time</p>
+            <p>@item.Date.ToString("dd/MM")</p>
+            <p>@item.Time.ToString("hh\\:mm")</p>
             <p>@item.Info</p>
         </div>
     }
