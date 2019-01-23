@@ -24,6 +24,10 @@ namespace ListTv.Controllers
 
         public object PuffList { get; } 
 
+        public object SortedChannelList { get; }
+
+        public object CategoryGenre { get; }
+
         public ActionResult PrivateList(string uname, string pword)
         {
             ProgramsController pc = new ProgramsController();
@@ -67,9 +71,9 @@ namespace ListTv.Controllers
                             }
                         }
                     }
-                    
                 }
-                return View(personlist);
+                ViewBag.SortedChannelList = SortChannelList(personlist);
+                return View(SortList(personlist));
             }
             else
             {
@@ -133,6 +137,7 @@ namespace ListTv.Controllers
                     o.Length = p.Length;
                     o.Info = p.Info;
                     progtables.Add(o);
+                    ViewBag.CategoryGenre = p.Category;
                 }
                 //progtables.Add(o);
             }
@@ -205,9 +210,29 @@ namespace ListTv.Controllers
 
         public List<ProgramVM> SortList(List<ProgramVM> list)
         {
-            list = list.OrderByDescending(x => x.ChannelId).ToList();
+            list = list.OrderBy(x => x.Time).ToList();
+            //list.Sort((x, y) => DateTime.Compare(x.Date.Value, y.Date.Value));
             return list;
         }
+
+        public List<int> SortChannelList(List<ProgramVM> list)
+        {
+            List<int> channels = new List<int>();
+            int i = 0;
+            int b = 0;
+            list = list.OrderByDescending(x => x.ChannelId).ToList();
+            foreach (var channel in list)
+            {
+                if (i == 0 || channel.ChannelId != b)
+                {
+                    channels.Add(channel.ChannelId);
+                    i++;
+                    b = channel.ChannelId;
+                }
+            }
+            return channels;
+        }
+
 
         public ActionResult AddFavorite(string uname, string pword)
         {

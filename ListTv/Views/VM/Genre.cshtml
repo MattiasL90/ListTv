@@ -6,16 +6,16 @@
 
 @model List<ListTv.ViewModels.ProgramVM>
 
+<h2 class="hdate">@ViewBag.CategoryGenre</h2>
 
-
-@for (int x = 0; x < 1; x++)
+@*@for (int x = 0; x < 1; x++)
 {
     foreach (var m in Model)
     {
         <h2>@m.Date</h2>
         break;
     }
-}
+}*@
 @helper Rename(int id)
 {
 
@@ -42,69 +42,64 @@
 }
 
 
-<div class="puffar">
-    @foreach (var item in ViewBag.PuffList)
-    {
-        <div class="puff">
-            <p>@item.ProgramName</p>
-            <p>@Rename(item.ChannelId)</p>
-            <p>@item.Date</p>
-            <p>@item.Time</p>
-            <p>@item.Info</p>
+        <div id="puffar">
+            @foreach (var item in ViewBag.PuffList)
+            {
+                <div class="puff">
+                    <p>@item.ProgramName</p>
+                    <p>@Rename(item.ChannelId)</p>
+                    <p>@item.Date</p>
+                    <p>@item.Time</p>
+                    <p>@item.Info</p>
+                </div>
+            }
         </div>
-    }
-</div>
 
 <div class="category">
-    <h3>Genre</h3>
+    <h3 id="genreh">Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Nyheter">Nyheter</button>
+        <button type="submit" name="cat" class="cat" value="Nyheter">Nyheter</button>
     </form>
-    <h3>Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Komedi">Komedi</button>
+        <button type="submit" name="cat" class="cat" value="Komedi">Komedi</button>
     </form>
-    <h3>Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Reality">Reality</button>
+        <button type="submit" name="cat" class="cat" value="Reality">Reality</button>
     </form>
-
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Drama">Drama</button>
+        <button type="submit" name="cat" class="cat" value="Drama">Drama</button>
     </form>
-
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Action">Action</button>
+        <button type="submit" name="cat" class="cat" value="Action">Action</button>
     </form>
-
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Sport">Sport</button>
+        <button type="submit" name="cat" class="cat" value="Sport">Sport</button>
     </form>
 </div>
 
+
+
 <div id="main">
-
-
     <div class="kanal">
         <h2>Svt</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 1)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -114,16 +109,16 @@
         <h2>Tv3</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 2)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -133,16 +128,16 @@
         <h2>Tv4</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 4)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -152,16 +147,16 @@
         <h2>Kanal 5</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 6)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -171,16 +166,16 @@
         <h2>Tv6</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 5)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }

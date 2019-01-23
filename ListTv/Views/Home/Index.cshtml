@@ -4,7 +4,7 @@
 
 @model List<ListTv.ViewModels.ProgramVM>
 
-
+<h2 class="hdate">Idag</h2>
 
 @helper Rename(int id)
 {
@@ -82,16 +82,16 @@
         <h2 class="kh">Svt</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 1)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -101,16 +101,16 @@
         <h2 class="kh">Tv3</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 2)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -120,16 +120,16 @@
         <h2 class="kh">Tv4</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 4)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -139,16 +139,16 @@
         <h2 class="kh">Kanal 5</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 6)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }
@@ -158,16 +158,16 @@
         <h2 class="kh">Tv6</h2>
         <table>
             <tr>
-                <th>Program</th>
-                <th>Tid</th>
+                <th class="thprog">Program</th>
+                <th class="thtid">Tid</th>
             </tr>
             @foreach (var p in Model)
             {
                 if (p.ChannelId == 5)
                 {
                     <tr>
-                        <td>@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
-                        <td>@p.Time</td>
+                        <td class="thprog">@Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null)</td>
+                        <td class="thtid">@p.Time</td>
                     </tr>
                 }
             }

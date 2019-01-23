@@ -44,6 +44,7 @@ namespace ListTv.Controllers
             string date = "2019-01-21";
             DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
+            VMController vm = new VMController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
             VMController vmc = new VMController();
@@ -63,7 +64,7 @@ namespace ListTv.Controllers
                 }
                 progtables.Add(o);
             }
-            return View(progtables);
+            return View(vm.SortList(progtables));
         }
 
         //public ActionResult ShowMore(int id)

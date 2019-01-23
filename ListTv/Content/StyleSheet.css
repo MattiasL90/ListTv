@@ -33,21 +33,34 @@
     text-align: center;
 }
 
-th, td {
+.thtid {
+    width: 50px;
+    background-color: coral;
+    border: solid;
+}
+
+.thprog {
+    width: 180px;
+    background-color: coral;
+    border: solid;
+}
+
+
+/*th, td {
     width: 150px;
     background-color:coral;
     border:solid;
-}
+}*/
 
 .kanal {
     float:left;
-    padding-left: 70px;
-    margin-top: 5px;
+    padding-left: 50px;
+    margin-top: 10px;
 }
 
 #main {
-    margin-left: 130px;
-    margin-top: 100px;
+    margin-left: 120px;
+    margin-top: 30px;
 }
 
 #genreh {
@@ -68,22 +81,25 @@ p {
 }
 
 #puffar {
-    overflow:hidden;
-    /*margin-top: 20px;*/
-    width: 250px; 
-    position: fixed;
-    right: 0;
+    overflow: hidden;
+    margin: auto;
+    padding-top: 20px;
+    width: 790px;
+    background-color: deeppink;
 }
 
+.puff + .puff {
+    margin-left: 20px;
+}
 
 .puff {
     border-radius: 25px;
+    position:center;
     border: 1px solid;
-    padding-right: 15px;
-    padding-bottom: 5px;
+    /*padding-right: 15px;*/
     float: left;
-    width: 200px;
-    margin-top: 30px;
+    width: 250px;
+    height: 180px;
 }
 .logdiv {
     top: 0;

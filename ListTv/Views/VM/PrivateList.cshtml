@@ -33,7 +33,7 @@
     }
 }
 
-@{
+@*@{
 
     List<int> channels = new List<int>();
     int i = 0;
@@ -47,7 +47,8 @@
             b = channel.ChannelId;
         }
     }
-}
+}*@
+
 @helper RenameChan(int id)
 {
 
@@ -90,7 +91,7 @@
 
 
 <div id="main">
-    @foreach (var item in channels)
+    @foreach (var item in ViewBag.SortedChannelList)
     {
         int pid = item;
         <div class="kanal">
@@ -104,8 +105,8 @@
             </div>
             <table>
                 <tr>
-                    <th>Program</th>
-                    <th>Tid</th>
+                    <th class="thprog">Program</th>
+                    <th class="thtid">Tid</th>
                 </tr>
                 @foreach (var p in Model)
 
@@ -113,8 +114,8 @@
                     if (p.ChannelId == pid)
                     {
                         <tr>
-                            <td> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
-                            <td> @p.Time </td>
+                            <td class="thprog"> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
+                            <td class="thtid"> @p.Time </td>
                         </tr>
                     }
                 }
