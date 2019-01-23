@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     string day = DateTime.Now.DayOfWeek.ToString();
     string done = DateTime.Now.AddDays(1).DayOfWeek.ToString();
     string dtwo = DateTime.Now.AddDays(2).DayOfWeek.ToString();
@@ -8,51 +8,157 @@
     string dsix = DateTime.Now.AddDays(6).DayOfWeek.ToString();
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/StyleSheets.css" rel="stylesheet" />
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/StyleSheets.css" rel="stylesheet" />
 
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
+                        <li> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</li>
+                        <li> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</li>
+                        <li> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
+                        <li> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
+                        <li> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
+                        <li> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</li>
+
+                    </ul>
+                    <div class="logdiv">
+                        <form method="get" action="@Url.Action("PrivateList", "VM")">
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required>
+                            <label for="pword"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="pword" required>
+                            <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Date My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+@Styles.Render("~/Content/StyleSheet.css")
+@Scripts.Render("~/bundles/modernizr")
+@*<link href="~/Content/StyleSheets.css" rel="stylesheet" />*@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Lato", sans-serif
+    }
+
+    .w3-bar, h1, button {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor, .fa-coffee {
+        font-size: 200px
+    }
+</style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
-                    <li> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</li>
-                    <li> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</li>
-                    <li> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
-                    <li> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
-                    <li> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
-                    <li> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</li>
-                
-                </ul>
-                <div class="logdiv">
-                    <form method="get" action="@Url.Action("PrivateList", "VM")">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-                        <label for="pword"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pword" required>
-                        <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
-                    </form>
-                </div> 
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-card w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+            @*<a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 1</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 2</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 3</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a>*@
+            <ul class="nav navbar-nav">
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</liclass="w3-bar-item>
+            </ul>
+            <div class="logdiv">
+                <form method="get" action="@Url.Action("PrivateList", "VM")">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="pword"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="pword" required>
+                    <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+            @*<a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>*@
+            <ul class="nav navbar-nav">
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</liclass="w3-bar-item>
+            </ul>
+            <div class="logdiv">
+                <form method="get" action="@Url.Action("PrivateList", "VM")">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="pword"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="pword" required>
+                    <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
+                </form>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Date My ASP.NET Application</p>
-        </footer>
     </div>
 
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

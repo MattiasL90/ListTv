@@ -12,7 +12,7 @@
 {
     foreach (var m in Model)
     {
-        <h2>@m.Date</h2>
+        <h2 class="hdate">@m.Date</h2>
         break;
     }
 }
@@ -42,7 +42,7 @@
 }
 
 
-<div class="puffar">
+<div id="puffar">
     @foreach (var item in ViewBag.PuffList)
     {
         <div class="puff">
@@ -56,41 +56,37 @@
 </div>
 
 <div class="category">
-    <h3>Genre</h3>
+    <h3 id="genreh">Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Nyheter">Nyheter</button>
+        <button type="submit" name="cat" class="cat" value="Nyheter">Nyheter</button>
     </form>
-    <h3>Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Komedi">Komedi</button>
+        <button type="submit" name="cat" class="cat" value="Komedi">Komedi</button>
     </form>
-    <h3>Genre</h3>
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Reality">Reality</button>
+        <button type="submit" name="cat" class="cat" value="Reality">Reality</button>
     </form>
-    
+
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Drama">Drama</button>
+        <button type="submit" name="cat" class="cat" value="Drama">Drama</button>
     </form>
-    
+
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Action">Action</button>
+        <button type="submit" name="cat" class="cat" value="Action">Action</button>
     </form>
-    
+
     <form method="get" action="@Url.Action("Genre", "VM")">
         <input type="hidden" id="datet" value="@ViewBag.Datumet" name="datet" />
-        <button type="submit" name="cat" id="cat" value="Sport">Sport</button>
+        <button type="submit" name="cat" class="cat" value="Sport">Sport</button>
     </form>
 </div>
 
 <div id="main">
-
-
     <div class="kanal">
         <h2>Svt</h2>
         <table>
