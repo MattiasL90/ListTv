@@ -265,6 +265,7 @@
     <Content Include="Views\Puffs\Edit.cshtml" />
     <Content Include="Views\Puffs\Index.cshtml" />
     <Content Include="Views\VM\Fail.cshtml" />
+    <Content Include="Views\VM\Genre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

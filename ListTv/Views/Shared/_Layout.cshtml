@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string day = DateTime.Now.DayOfWeek.ToString();
+    string done = DateTime.Now.AddDays(1).DayOfWeek.ToString();
+    string dtwo = DateTime.Now.AddDays(2).DayOfWeek.ToString();
+    string dthree = DateTime.Now.AddDays(3).DayOfWeek.ToString();
+    string dfour = DateTime.Now.AddDays(4).DayOfWeek.ToString();
+    string dfive = DateTime.Now.AddDays(5).DayOfWeek.ToString();
+    string dsix = DateTime.Now.AddDays(6).DayOfWeek.ToString();
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,27 +16,32 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/StyleSheets.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Måndag", "Index", "Home", new { date = "2019-01-21" }, null)</li>
-                    <li> @Html.ActionLink("Tisdag", "Days", "VM", new { date = "2019-01-22" }, null)</li>
-                    <li> @Html.ActionLink("Onsdag", "Days", "VM", new { date = "2019-01-23" }, null)</li>
-                    <li> @Html.ActionLink("Torsdag", "Days", "VM", new { date = "2019-01-24" }, null)</li>
-                    <li> @Html.ActionLink("Fredag", "Days", "VM", new { date = "2019-01-25" }, null)</li>
-                    <li> @Html.ActionLink("Lördag", "Days", "VM", new { date = "2019-01-26" }, null)</li>
-                    <li> @Html.ActionLink("Söndag", "Days", "VM", new { date = "2019-01-27" }, null)</li>
+                    <li> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
+                    <li> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</li>
+                    <li> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</li>
+                    <li> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
+                    <li> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
+                    <li> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
+                    <li> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</li>
+                
                 </ul>
-                <form method="get" action="@Url.Action("PrivateList", "VM")">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="pword"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pword" required>
-                    <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
-                </form>
+                <div class="logdiv">
+                    <form method="get" action="@Url.Action("PrivateList", "VM")">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+                        <label for="pword"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="pword" required>
+                        <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
+                    </form>
+                </div> 
             </div>
         </div>
     </div>

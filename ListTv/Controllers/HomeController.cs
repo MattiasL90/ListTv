@@ -15,6 +15,9 @@ namespace ListTv.Controllers
         //{
         //    return View();
         //}
+
+         public object Datumet { get; }
+        
         public object PuffList { get; }
        
         public ActionResult About()
@@ -31,6 +34,11 @@ namespace ListTv.Controllers
             return View();
         }
 
+        public ActionResult Genre(string cat, string datet)
+        {
+            return RedirectToAction("Genre", "VM", new { cat, datet });
+        }
+
         public ActionResult Index()
         {
             string date = "2019-01-21";
@@ -40,7 +48,7 @@ namespace ListTv.Controllers
             var program = pc.SendList();
             VMController vmc = new VMController();
             ViewBag.PuffList = vmc.GetPuff();
-
+            ViewBag.Datumet = date;
             foreach (var p in program)
             {
                 ProgramVM o = new ProgramVM();

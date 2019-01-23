@@ -82,18 +82,20 @@ namespace ListTv.Controllers
         }
 
 
-        public ActionResult Days(string date)
+        public ActionResult Days(DateTime date)
         {
-            DateTime datum = Convert.ToDateTime(date);
+            date = date.Date;
+            //DateTime datum = Convert.ToDateTime(date);
             ProgramsController pc = new ProgramsController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
             ViewBag.PuffList = GetPuff();
+            ViewBag.Datumet = date;
 
             foreach (var p in program)
             {
                 ProgramVM o = new ProgramVM();
-                if (p.Date == datum)
+                if (p.Date == date)
                 {
                     o.Id = p.Id;
                     o.ProgramName = p.ProgramName;
@@ -102,10 +104,40 @@ namespace ListTv.Controllers
                     o.Date = p.Date;
                     o.Length = p.Length;
                     o.Info = p.Info;
+                    progtables.Add(o);
                 }
-                progtables.Add(o);
+                //progtables.Add(o);
             }
             return View(SortList(progtables));
+        }
+
+        public ActionResult Genre(string cat, DateTime datet)
+        {
+            //DateTime datum = Convert.ToDateTime(datet);
+            ProgramsController pc = new ProgramsController();
+            List<ProgramVM> progtables = new List<ProgramVM>();
+            var program = pc.SendList();
+            ViewBag.PuffList = GetPuff();
+            ViewBag.Datumet = datet;
+
+            foreach (var p in program)
+            {
+                ProgramVM o = new ProgramVM();
+                if (p.Date == datet && p.Category == cat)
+                {
+                    o.Id = p.Id;
+                    o.ProgramName = p.ProgramName;
+                    o.Time = p.Time;
+                    o.ChannelId = p.ChannelId.Value;
+                    o.Date = p.Date;
+                    o.Length = p.Length;
+                    o.Info = p.Info;
+                    progtables.Add(o);
+                }
+                //progtables.Add(o);
+            }
+            return View(SortList(progtables));
+            //return View(SortList(progtables));
         }
 
         public ActionResult ShowMore(int id)

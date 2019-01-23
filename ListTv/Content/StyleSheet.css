@@ -18,3 +18,19 @@
     left: 0px;
     padding-left: 0px;
 }
+
+.puffar{
+    border-width: 2px;
+}
+.logdiv {
+    top: 0;
+    right: 0;
+    position: fixed;
+}
+.category {
+    left: 0;
+    width: 10%;
+    position: fixed;
+    left: 0;
+}
+
