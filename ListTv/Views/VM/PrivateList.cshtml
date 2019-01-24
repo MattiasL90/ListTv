@@ -90,42 +90,45 @@
  </div>
 
 
-<div id="main">
-    @foreach (var item in ViewBag.SortedChannelList)
-    {
-        int pid = item;
-        <div class="kanal">
-            <div>
-                <h2>@Rename(item)</h2>
-                <form method="get" action="@Url.Action("DeleteFavorite", "VM")">
-                    <input type="hidden" id="pword" value="@ViewBag.PassWord" name="pword" />
-                    <input type="hidden" id="channl" value=@item name="channl" />
-                    <button type="submit" name="uname" id="uname" value="@ViewBag.UserName">Ta bort</button>
-                </form>
-            </div>
-            <table>
-                <tr>
-                    <th class="thprog">Program</th>
-                    <th class="thtid">Tid</th>
-                </tr>
-                @foreach (var p in Model)
+ <div id="main">
+     <div id="idp">
+         <div id="pknappy">
+             @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
+         </div>
+     </div>
 
-                {
-                    if (p.ChannelId == pid)
-                    {
-                        <tr>
-                            <td class="thprog"> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
-                            <td class="thtid"> @p.Time </td>
-                        </tr>
-                    }
-                }
-            </table>
-        </div>
-    }
+     @foreach (var item in ViewBag.SortedChannelList)
+     {
+         int pid = item;
+         <div class="kanal">
+             <div>
+                 <h2>@Rename(item)</h2>
+                 <form method="get" action="@Url.Action("DeleteFavorite", "VM")">
+                     <input type="hidden" id="pword" value="@ViewBag.PassWord" name="pword" />
+                     <input type="hidden" id="channl" value=@item name="channl" />
+                     <button type="submit" name="uname" id="uname" value="@ViewBag.UserName">Ta bort</button>
+                 </form>
+             </div>
+             <table>
+                 <tr>
+                     <th class="thprog">Program</th>
+                     <th class="thtid">Tid</th>
+                 </tr>
+                 @foreach (var p in Model)
 
-    <div id="options">
-        @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
+                 {
+                     if (p.ChannelId == pid)
+                     {
+                         <tr>
+                             <td class="thprog"> @Html.ActionLink(p.ProgramName, "ShowMore", "VM", new { id = p.Id }, null) </td>
+                             <td class="thtid"> @p.Time </td>
+                         </tr>
+                     }
+                 }
+             </table>
+         </div>
+     }
 
-    </div>
-</div>
+
+ </div>
 

@@ -6,15 +6,14 @@
     }
 
     <h2>Program</h2>
-    <div id="puffss">
+    <div id="adminButtons">
 
-        @Html.ActionLink("Ändra puffar", "Index", "Puffs")
+        @Html.ActionLink("Ändra puffar", "Index", "Puffs", null, new { @class = "knappy" })
+        @Html.ActionLink("Skapa program", "Create", null, new { @class = "knappy" })
 
     </div>
     <div id="plist">
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+
         <table class="table">
             <tr>
                 <th>
