@@ -168,7 +168,7 @@ p {
     overflow: hidden;
     margin: auto;
     padding-top: 20px;
-    width: 450px;
+    width: 700px;
     /*background-color: deeppink;*/
 }
 
@@ -176,14 +176,15 @@ p {
     position: center;
     /*padding-right: 15px;*/
     float: left;
-    width: 150px;
+    width: 233px;
     height: 180px;
     /*background-color: blueviolet;*/
 }
 
 .infoTd {
-    width: 140px;
-    
+    width: 200px;
+    /*background-color: aqua;*/
+    margin-left: -2px;
 }
 
 #pTh {
