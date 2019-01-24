@@ -24,6 +24,12 @@
     right: 0;
     position: fixed;
 }*/
+.fail {
+    margin: auto;
+    padding-top:300px;
+    background-color:brown;
+}
+
 .hdate {
     margin-top: 80px;
     text-align: center;
@@ -114,6 +120,7 @@ p {
     left: 0;
     width: 130px;
     position: fixed;
+    height: 100%;
     background-color: chartreuse;
 }
 
