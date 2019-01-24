@@ -32,18 +32,24 @@
 }
 
 
-<div id="puffar">
-    @foreach (var item in ViewBag.PuffList)
-    {
-        <div class="puff">
-            <p><b>@item.ProgramName</b></p>
-            <p>@Rename(item.ChannelId)</p>
-            <p>@item.Date.ToString("dd/MM")</p>
-            <p>@item.Time.ToString("hh\\:mm")</p>
-            <p>@item.Info</p>
+        <div id="tpuffar">
+            @foreach (var item in ViewBag.PuffList)
+            {
+            <div class="tpuff">
+                <table>
+                    <tr>
+                        <td id="pTh"><b>@item.ProgramName</b></td>
+                        <td>@Rename(item.ChannelId)</td>
+                    </tr>
+                    <tr>
+                        <td>@item.Date.ToString("dd/MM")</td>
+                        <td>@item.Time.ToString("hh\\:mm")</td>
+                    </tr>
+                </table>
+                <p class="infoTd">@item.Info</p>
+            </div>
+            }
         </div>
-    }
-</div>
 
 <div class="category">
     <h3 id="genreh">Genre</h3>

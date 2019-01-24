@@ -99,19 +99,19 @@
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a>*@
             <ul class="nav navbar-nav">
                 <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
-                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</liclass="w3-bar-item>
-                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</li>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</li>
                 <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
                 <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
                 <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
-                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</li>
             </ul>
             <div class="logdiv">
                 <form method="get" action="@Url.Action("PrivateList", "VM")">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="pword"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pword" required>
+                    <label id="lbboop" for="uname"><b>Username</b></label>
+                    <input id="boop" type="text" placeholder="Enter Username" name="uname" required>
+                    <label id="lbboop" for="pword"><b>Password</b></label>
+                    <input id="boop" type="password" placeholder="Enter Password" name="pword" required>
                     <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
                 </form>
             </div>
@@ -125,20 +125,20 @@
                 <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>*@
             <ul class="nav navbar-nav">
                 <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(day, "Index", "Home", new { date = DateTime.Now }, null)</li>
-                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</liclass="w3-bar-item>
-                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(done, "Days", "VM", new { date = DateTime.Now.AddDays(1) }, null)</li>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dtwo, "Days", "VM", new { date = DateTime.Now.AddDays(2) }, null)</li>
                 <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dthree, "Days", "VM", new { date = DateTime.Now.AddDays(3) }, null)</li>
                 <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dfour, "Days", "VM", new { date = DateTime.Now.AddDays(4) }, null)</li>
                 <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dfive, "Days", "VM", new { date = DateTime.Now.AddDays(5) }, null)</li>
-                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</liclass="w3-bar-item>
+                <li class="w3-bar-item w3-button w3-padding-large"> @Html.ActionLink(dsix, "Days", "VM", new { date = DateTime.Now.AddDays(6) }, null)</li>
             </ul>
             <div class="logdiv">
                 <form method="get" action="@Url.Action("PrivateList", "VM")">
-                    <label for="uname"><b>Username</b></label>
+                    @*<label for="uname"><b>Username</b></label>*@
                     <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="pword"><b>Password</b></label>
+                    @*<label for="pword"><b>Password</b></label>*@
                     <input type="password" placeholder="Enter Password" name="pword" required>
-                    <button type="submit" name="date" id="date" value="@DateTime.Now.Date">Login</button>
+                    <button type="submit" name="date" id="datea" value="@DateTime.Now.Date">Login</button>
                 </form>
             </div>
         </div>

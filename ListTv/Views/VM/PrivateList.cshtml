@@ -76,24 +76,30 @@
 
  <h1>@ViewBag.Username</h1>
 
- <div id="puffar">
+ <div id="tpuffar">
      @foreach (var item in ViewBag.PuffList)
-     {
-         <div class="puff">
-             <p><b>@item.ProgramName</b></p>
-             <p>@Rename(item.ChannelId)</p>
-             <p>@item.Date.ToString("dd/MM")</p>
-             <p>@item.Time.ToString("hh\\:mm")</p>
-             <p>@item.Info</p>
-         </div>
-     }
+            {
+     <div class="tpuff">
+         <table>
+             <tr>
+                 <td id="pTh"><b>@item.ProgramName</b></td>
+                 <td>@Rename(item.ChannelId)</td>
+             </tr>
+             <tr>
+                 <td>@item.Date.ToString("dd/MM")</td>
+                 <td>@item.Time.ToString("hh\\:mm")</td>
+             </tr>
+         </table>
+         <p class="infoTd">@item.Info</p>
+     </div>
+            }
  </div>
 
 
  <div id="main">
      <div id="idp">
          <div id="pknappy">
-             @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName }, null)
+             @Html.ActionLink("Lägg till kanal", "AddFavorite", "VM", new { uname = @ViewBag.UserName, pword = ViewBag.PassWord }, null)
          </div>
      </div>
 

@@ -25,6 +25,7 @@
     position: fixed;
 }*/
 
+
 #adminButtons, #idp { 
     width:100%;
     height:70px;
@@ -73,13 +74,13 @@ a.knappy {
 
 .thtid {
     width: 50px;
-    background-color: coral;
+    background-color: skyblue;
     border: solid;
 }
 
 .thprog {
     width: 180px;
-    background-color: coral;
+    background-color: skyblue;
     border: solid;
 }
 
@@ -93,12 +94,12 @@ a.knappy {
 .kanal {
     float:left;
     padding-left: 50px;
-    margin-top: 10px;
+    
 }
 
 #main {
     margin-left: 120px;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 
 #genreh {
@@ -123,7 +124,7 @@ p {
     margin: auto;
     padding-top: 20px;
     width: 790px;
-    background-color: deeppink;
+    
 }
 
 .puff + .puff {
@@ -153,7 +154,7 @@ p {
     width: 130px;
     position: fixed;
     height: 100%;
-    background-color: chartreuse;
+    
 }
 
 #smore {
@@ -163,15 +164,56 @@ p {
     /*background-color: dodgerblue;*/
 }
 
+#tpuffar {
+    overflow: hidden;
+    margin: auto;
+    padding-top: 20px;
+    width: 450px;
+    /*background-color: deeppink;*/
+}
+
+.tpuff {
+    position: center;
+    /*padding-right: 15px;*/
+    float: left;
+    width: 150px;
+    height: 180px;
+    /*background-color: blueviolet;*/
+}
+
+.infoTd {
+    width: 140px;
+    
+}
+
+#pTh {
+    text-align: center;
+}
 
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 681px) {
+
+    .kanal {
+        float: none;
+        width: 70%;
+        margin-left: 10%;
+    }
+
+    #main {
+        width: 100%;
+        margin-left: 0px;
+        /*margin-top: 30px;*/
+
+    }
 
     .cat {
         float: left;
+        width: 16.6%;
+        margin-left: 0;
+        height: 50px;
     }
 
     #genreh {
@@ -185,8 +227,9 @@ p {
         position: center;
         margin: auto;
         float: left;
-        background-color: chartreuse;
-        height:70px;
+        
+        height: 60px;
+        padding-left: 0;
     }
 
     .puff {
@@ -198,6 +241,106 @@ p {
     }
 
     .logdiv {
-        width: 90%;
+        
+        top: 0;
+        left: 0;
+        position: fixed;
+        padding-top: 10px;
+        padding-right: 10px;
+        margin-right: 50px;
+    }
+    #boop {
+       
+        display: none;
+        
+    }
+    #date{
+        display: none;
+    }
+    #lbboop {
+        display: none;
+    }
+    .hdate{
+        margin-top: 140px;
     }
 }
+@media screen and (max-width: 1201px) {
+
+    .kanal {
+        float: left;
+        height: 300px;
+        width: 30%;
+        margin-left: 20px;
+       
+        padding-bottom: 50px;
+        
+    }
+    
+    #main {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .cat {
+        float: left;
+        width: 16.6%;
+        margin-left: 0;
+        height: 50px;
+        margin-right:0;
+    }
+
+    #genreh {
+        display: none;
+    }
+
+    .category {
+        top: 70px;
+        left: 0;
+        width: 100%;
+        position: center;
+        margin: auto;
+        float: left;
+        
+        height: 60px;
+        padding-left: 0;
+    }
+
+    .logdiv {
+        top: 0;
+        right: -290px;
+        position: fixed;
+        padding-top: 10px;
+        padding-right: 0; 
+        margin-right: 0;
+    }
+
+    #boop {
+        /*float: left;*/
+        width: 15%;
+        margin-right: 2px;
+        height: 40px;
+    }
+
+    #date {
+        width: 15%;
+        right: 0;
+        height: 40px;
+        margin-right: 0;
+        padding-right:0;
+        
+    }
+
+    #lbboop {
+        display: none;
+    }
+
+    .hdate {
+        margin-top: 140px;
+    }
+
+
+
+
+}
+
+

@@ -6,7 +6,7 @@
 
 @model List<string>
 
-               <div>
+               <div id="smore">
 
 
 
@@ -18,12 +18,8 @@
                 }
                        </select>
                        <input type="hidden" id="pword" value="@ViewBag.PassWord" name="pword" />
-
                        <button type="submit" name="uname" id="uname" value="@ViewBag.UserName">Lägg till</button>
                    </form>
-
-
-
 
                    <form method="get" action="@Url.Action("PrivateList", "VM")">
                        <input type="hidden" id="pword" value="@ViewBag.PassWord" name="pword" />
