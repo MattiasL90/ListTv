@@ -234,6 +234,25 @@ namespace ListTv.Controllers
         }
 
 
+        public List<string> SortStringChannelList(List<ProgramVM> list)
+        {
+            List<string> channels = new List<string>();
+            int i = 0;
+            int b = 0;
+            list = list.OrderByDescending(x => x.ChannelId).ToList();
+            foreach (var channel in list)
+            {
+                if (i == 0 || channel.ChannelId != b)
+                {
+                    channels.Add(GetChannel(channel.ChannelId));
+                    i++;
+                    b = channel.ChannelId;
+                }
+            }
+            return channels;
+        }
+
+
         public ActionResult AddFavorite(string uname, string pword)
         {
             ViewBag.UserName = uname;

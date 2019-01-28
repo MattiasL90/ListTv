@@ -41,19 +41,18 @@ namespace ListTv.Controllers
 
         public ActionResult Index()
         {
-            string date = "2019-01-21";
-            DateTime datum = Convert.ToDateTime(date);
+            var dateAndTime = DateTime.Now;
+            var datee = dateAndTime.Date;
             ProgramsController pc = new ProgramsController();
             VMController vm = new VMController();
             List<ProgramVM> progtables = new List<ProgramVM>();
             var program = pc.SendList();
             VMController vmc = new VMController();
             ViewBag.PuffList = vmc.GetPuff();
-            ViewBag.Datumet = date;
             foreach (var p in program)
             {
                 ProgramVM o = new ProgramVM();
-                if (p.Date == datum)
+                if (p.Date == datee)
                 {
                     o.Id = p.Id;
                     o.ProgramName = p.ProgramName;
